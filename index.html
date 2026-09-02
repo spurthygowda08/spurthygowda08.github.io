@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +19,7 @@
   />
 
   <style>
+
     /* =========================
        RESET
     ========================= */
@@ -56,6 +56,7 @@
       margin: auto;
     }
 
+
     /* =========================
        COLORS
     ========================= */
@@ -65,13 +66,18 @@
       --bg-secondary: #0c121c;
       --card: #101824;
       --card-hover: #141e2c;
+
       --text: #eef2f7;
       --muted: #94a3b8;
+
       --primary: #64b5f6;
       --secondary: #8b7cff;
+
       --green: #38d39f;
+
       --border: rgba(255, 255, 255, 0.08);
     }
+
 
     /* =========================
        NAVBAR
@@ -81,13 +87,16 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(7, 11, 18, 0.85);
+
+      background: rgba(7, 11, 18, 0.88);
       backdrop-filter: blur(14px);
+
       border-bottom: 1px solid var(--border);
     }
 
     nav {
-      height: 72px;
+      height: 68px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -95,7 +104,7 @@
 
     .logo {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: -0.5px;
     }
@@ -106,15 +115,19 @@
 
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 4px;
       list-style: none;
     }
 
     .nav-links a {
-      padding: 8px 14px;
+      padding: 8px 12px;
+
       color: var(--muted);
+
       border-radius: 8px;
-      font-size: 0.9rem;
+
+      font-size: 0.88rem;
+
       transition: 0.25s;
     }
 
@@ -125,116 +138,173 @@
 
     .menu-btn {
       display: none;
+
       background: none;
       border: none;
+
       color: var(--text);
+
       font-size: 1.6rem;
+
       cursor: pointer;
     }
+
 
     /* =========================
        HERO
     ========================= */
 
     #home {
-      min-height: calc(100vh - 72px);
+      min-height: calc(100vh - 68px);
+
       display: flex;
       align-items: center;
+
       position: relative;
       overflow: hidden;
     }
 
     #home::before {
       content: "";
+
       position: absolute;
+
       width: 600px;
       height: 600px;
+
       background: rgba(100, 181, 246, 0.08);
+
       filter: blur(100px);
+
       border-radius: 50%;
+
       top: -200px;
       right: -150px;
     }
 
     #home::after {
       content: "";
+
       position: absolute;
+
       width: 450px;
       height: 450px;
+
       background: rgba(139, 124, 255, 0.07);
+
       filter: blur(100px);
+
       border-radius: 50%;
+
       bottom: -200px;
       left: -150px;
     }
 
     .hero {
       display: grid;
+
       grid-template-columns: 1.3fr 0.7fr;
+
       gap: 60px;
+
       align-items: center;
+
       position: relative;
       z-index: 2;
+
+      padding: 70px 0;
     }
 
     .hero-tag {
       color: var(--primary);
-      font-size: 0.8rem;
+
+      font-size: 0.78rem;
+
       letter-spacing: 0.18em;
+
       text-transform: uppercase;
+
       margin-bottom: 18px;
+
       font-weight: 600;
     }
 
     .hero h1 {
       font-family: "Space Grotesk", sans-serif;
+
       font-size: clamp(3.2rem, 7vw, 6rem);
+
       line-height: 0.95;
+
       letter-spacing: -0.05em;
+
       margin-bottom: 22px;
     }
 
     .hero h1 span {
       display: block;
+
       background: linear-gradient(
         100deg,
         var(--primary),
         var(--secondary)
       );
+
       -webkit-background-clip: text;
       background-clip: text;
+
       color: transparent;
     }
 
     .hero-role {
       font-size: clamp(1.1rem, 2vw, 1.45rem);
+
       font-weight: 600;
+
       margin-bottom: 16px;
+
       color: #d8e1ec;
     }
 
     .hero-description {
       color: var(--muted);
+
       max-width: 650px;
+
       font-size: 1rem;
+
       margin-bottom: 30px;
     }
 
     .hero-buttons {
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 12px;
     }
 
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
     .btn {
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
+
       padding: 11px 18px;
+
       border-radius: 10px;
+
       font-weight: 600;
+
       font-size: 0.9rem;
+
       border: 1px solid var(--border);
+
       transition: 0.25s;
     }
 
@@ -244,7 +314,9 @@
         var(--primary),
         var(--secondary)
       );
+
       color: #07101a;
+
       border: none;
     }
 
@@ -256,41 +328,64 @@
       transform: translateY(-3px);
     }
 
+
+    /* =========================
+       AVAILABILITY
+    ========================= */
+
     .availability {
       margin-top: 28px;
+
       display: flex;
+
       align-items: center;
+
       gap: 9px;
+
       color: var(--muted);
+
       font-size: 0.85rem;
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
+
       background: var(--green);
+
       border-radius: 50%;
+
       box-shadow: 0 0 12px var(--green);
     }
 
-    /* HERO CARD */
+
+    /* =========================
+       PROFILE CARD
+    ========================= */
 
     .hero-card {
       display: flex;
+
       justify-content: center;
     }
 
     .profile-card {
       width: 290px;
+
       padding: 10px;
+
       background: linear-gradient(
         145deg,
         rgba(100, 181, 246, 0.18),
         rgba(139, 124, 255, 0.12)
       );
+
       border: 1px solid var(--border);
+
       border-radius: 24px;
+
       transform: rotate(2deg);
+
       transition: 0.4s;
     }
 
@@ -298,22 +393,48 @@
       transform: rotate(0deg) translateY(-8px);
     }
 
-    .profile-card img {
+    /* Temporary photo placeholder */
+
+    .profile-placeholder {
       width: 100%;
+
       aspect-ratio: 3 / 4;
-      object-fit: cover;
-      object-position: top center;
+
       border-radius: 18px;
-      display: block;
-      background: #111827;
+
+      background:
+        radial-gradient(
+          circle at 30% 20%,
+          rgba(100, 181, 246, 0.2),
+          transparent 40%
+        ),
+        #111827;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      padding: 20px;
+
+      font-size: 0.9rem;
     }
 
     .photo-note {
       text-align: center;
+
       color: var(--muted);
+
       font-size: 0.7rem;
+
       padding: 8px;
     }
+
 
     /* =========================
        SECTIONS
@@ -329,34 +450,38 @@
 
     .section-label {
       color: var(--primary);
+
       font-size: 0.75rem;
+
       letter-spacing: 0.18em;
+
       text-transform: uppercase;
+
       font-weight: 700;
+
       margin-bottom: 8px;
     }
 
     .section-heading h2 {
       font-family: "Space Grotesk", sans-serif;
+
       font-size: clamp(2rem, 4vw, 3rem);
+
       letter-spacing: -0.04em;
     }
 
     .section-heading p {
       color: var(--muted);
+
       max-width: 650px;
+
       margin-top: 8px;
     }
 
-    /* =========================
-       ABOUT
-    ========================= */
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 22px;
-    }
+    /* =========================
+       CARDS
+    ========================= */
 
     .card {
       background: linear-gradient(
@@ -364,78 +489,69 @@
         rgba(16, 24, 36, 0.95),
         rgba(12, 18, 28, 0.95)
       );
+
       border: 1px solid var(--border);
+
       border-radius: 18px;
+
       padding: 28px;
+
       transition: 0.3s;
     }
 
     .card:hover {
       transform: translateY(-4px);
+
       border-color: rgba(100, 181, 246, 0.25);
     }
 
     .card h3 {
       font-family: "Space Grotesk", sans-serif;
+
       font-size: 1.25rem;
+
       margin-bottom: 14px;
     }
 
     .card p {
       color: var(--muted);
+
       font-size: 0.95rem;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 1.5fr 1fr;
+
+      gap: 22px;
     }
 
     .about-points {
       margin-top: 20px;
+
       display: grid;
+
       gap: 12px;
     }
 
     .about-point {
       padding: 12px;
+
       background: rgba(255, 255, 255, 0.025);
+
       border-radius: 10px;
+
       color: #cbd5e1;
+
       font-size: 0.9rem;
     }
 
-    /* =========================
-       SKILLS
-    ========================= */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .skill-group h3 {
-      margin-bottom: 15px;
-      font-size: 1rem;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill {
-      padding: 7px 11px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.025);
-      color: #cbd5e1;
-      font-size: 0.82rem;
-      transition: 0.2s;
-    }
-
-    .skill:hover {
-      border-color: rgba(100, 181, 246, 0.4);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
 
     /* =========================
        EXPERIENCE
@@ -443,13 +559,17 @@
 
     .timeline {
       position: relative;
+
       margin-left: 10px;
+
       padding-left: 30px;
+
       border-left: 1px dashed rgba(255, 255, 255, 0.15);
     }
 
     .timeline-item {
       position: relative;
+
       margin-bottom: 35px;
     }
 
@@ -459,33 +579,45 @@
 
     .timeline-item::before {
       content: "";
+
       position: absolute;
+
       left: -37px;
+
       top: 5px;
+
       width: 12px;
       height: 12px;
+
       border-radius: 50%;
+
       background: linear-gradient(
         135deg,
         var(--primary),
         var(--secondary)
       );
-      box-shadow: 0 0 0 5px rgba(100, 181, 246, 0.1);
+
+      box-shadow:
+        0 0 0 5px rgba(100, 181, 246, 0.1);
     }
 
     .timeline-item h3 {
       font-family: "Space Grotesk", sans-serif;
+
       font-size: 1.25rem;
     }
 
     .timeline-meta {
       color: var(--primary);
+
       font-size: 0.85rem;
+
       margin: 4px 0 12px;
     }
 
     .timeline-item ul {
       padding-left: 18px;
+
       color: var(--muted);
     }
 
@@ -493,31 +625,40 @@
       margin-bottom: 7px;
     }
 
+
     /* =========================
        PROJECTS
     ========================= */
 
     .projects-grid {
       display: grid;
+
       grid-template-columns: repeat(2, 1fr);
+
       gap: 20px;
     }
 
     .project-card {
       display: flex;
+
       flex-direction: column;
+
       min-height: 300px;
     }
 
     .project-number {
       color: var(--primary);
+
       font-size: 0.75rem;
+
       letter-spacing: 0.15em;
+
       margin-bottom: 20px;
     }
 
     .project-card h3 {
       font-size: 1.35rem;
+
       margin-bottom: 10px;
     }
 
@@ -527,27 +668,37 @@
 
     .project-tags {
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 7px;
+
       margin: 20px 0;
     }
 
     .project-tag {
       font-size: 0.75rem;
+
       padding: 5px 9px;
+
       background: rgba(100, 181, 246, 0.08);
+
       color: #a8d8fa;
+
       border-radius: 6px;
     }
 
     .project-links {
       display: flex;
+
       gap: 12px;
     }
 
     .project-links a {
       color: var(--primary);
+
       font-size: 0.85rem;
+
       font-weight: 600;
     }
 
@@ -555,24 +706,77 @@
       text-decoration: underline;
     }
 
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 18px;
+    }
+
+    .skill-group h3 {
+      margin-bottom: 15px;
+
+      font-size: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+    }
+
+    .skill {
+      padding: 7px 11px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      color: #cbd5e1;
+
+      font-size: 0.82rem;
+
+      transition: 0.2s;
+    }
+
+    .skill:hover {
+      border-color: rgba(100, 181, 246, 0.4);
+
+      color: var(--primary);
+
+      transform: translateY(-2px);
+    }
+
+
     /* =========================
        EDUCATION
     ========================= */
 
     .education-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
 
-    .education-card {
-      position: relative;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 18px;
     }
 
     .education-year {
       color: var(--primary);
+
       font-size: 0.8rem;
+
       font-weight: 600;
+
       margin-bottom: 8px;
     }
 
@@ -584,33 +788,43 @@
       margin-bottom: 4px;
     }
 
+
     /* =========================
        CONTACT
     ========================= */
 
     .contact-box {
       text-align: center;
+
       padding: 60px 30px;
     }
 
     .contact-box h2 {
       font-family: "Space Grotesk", sans-serif;
+
       font-size: clamp(2rem, 5vw, 3.5rem);
+
       margin-bottom: 15px;
     }
 
     .contact-box p {
       color: var(--muted);
+
       max-width: 600px;
+
       margin: 0 auto 28px;
     }
 
     .contact-links {
       display: flex;
+
       justify-content: center;
+
       flex-wrap: wrap;
+
       gap: 12px;
     }
+
 
     /* =========================
        FOOTER
@@ -618,20 +832,27 @@
 
     footer {
       border-top: 1px solid var(--border);
+
       padding: 28px 0;
+
       color: var(--muted);
+
       font-size: 0.8rem;
     }
 
     .footer-inner {
       display: flex;
+
       justify-content: space-between;
+
       gap: 20px;
+
       align-items: center;
     }
 
     .socials {
       display: flex;
+
       gap: 18px;
     }
 
@@ -639,8 +860,9 @@
       color: var(--primary);
     }
 
+
     /* =========================
-       ANIMATIONS
+       ANIMATION
     ========================= */
 
     .fade-up {
@@ -650,29 +872,41 @@
     @keyframes fadeUp {
       from {
         opacity: 0;
+
         transform: translateY(25px);
       }
 
       to {
         opacity: 1;
+
         transform: translateY(0);
       }
     }
+
 
     /* =========================
        MOBILE
     ========================= */
 
     @media (max-width: 800px) {
+
       .nav-links {
         display: none;
+
         position: absolute;
-        top: 72px;
+
+        top: 68px;
+
         left: 0;
+
         width: 100%;
+
         padding: 15px;
+
         flex-direction: column;
+
         background: rgba(7, 11, 18, 0.98);
+
         border-bottom: 1px solid var(--border);
       }
 
@@ -682,6 +916,7 @@
 
       .nav-links a {
         display: block;
+
         padding: 12px;
       }
 
@@ -691,13 +926,17 @@
 
       .hero {
         grid-template-columns: 1fr;
+
         text-align: center;
+
         gap: 45px;
+
         padding: 70px 0;
       }
 
       .hero-description {
         margin-left: auto;
+
         margin-right: auto;
       }
 
@@ -730,11 +969,14 @@
 
       .footer-inner {
         flex-direction: column;
+
         text-align: center;
       }
     }
 
+
     @media (max-width: 500px) {
+
       .hero h1 {
         font-size: 3.1rem;
       }
@@ -755,8 +997,10 @@
         width: 100%;
       }
     }
+
   </style>
 </head>
+
 
 <body>
 
@@ -765,38 +1009,77 @@
   ========================== -->
 
   <header>
+
     <div class="container">
+
       <nav>
+
         <a href="#home" class="logo">
           SPURTHY<span>.</span>
         </a>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+        >
           ☰
         </button>
 
         <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
+
+          <li>
+            <a href="#home">Home</a>
+          </li>
+
+          <li>
+            <a href="#about">About</a>
+          </li>
+
+          <li>
+            <a href="#experience">Experience</a>
+          </li>
+
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+
+          <li>
+            <a href="#education">Education</a>
+          </li>
+
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+
         </ul>
+
       </nav>
+
     </div>
+
   </header>
 
 
   <!-- =========================
-       HERO
+       MAIN
   ========================== -->
 
   <main>
 
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
     <section id="home">
+
       <div class="container">
+
         <div class="hero">
 
           <div class="fade-up">
@@ -821,10 +1104,14 @@
               reliable user experiences through testing and debugging.
             </p>
 
+
             <div class="hero-buttons">
 
-              <!-- Change resume.pdf when you upload your resume -->
-              <a href="resume.pdf" class="btn btn-primary" target="_blank">
+              <!-- Resume will be added later -->
+              <a
+                href="#"
+                class="btn btn-primary"
+              >
                 View Resume
               </a>
 
@@ -836,10 +1123,9 @@
                 GitHub
               </a>
 
-              <!-- Replace # with your LinkedIn URL -->
+              <!-- LinkedIn will be added later -->
               <a
                 href="#"
-                target="_blank"
                 class="btn btn-secondary"
               >
                 LinkedIn
@@ -854,30 +1140,35 @@
 
             </div>
 
+
             <div class="availability">
+
               <span class="status-dot"></span>
+
               Open to software development and QA opportunities
+
             </div>
 
           </div>
 
 
+          <!-- PROFILE -->
+
           <div class="hero-card fade-up">
 
             <div class="profile-card">
 
-              <!--
-                IMPORTANT:
-                Later we will upload your photo as:
-                profile.jpg
+              <!-- PHOTO WILL BE ADDED LATER -->
 
-                Then this will automatically display it.
-              -->
-
-              <img
-                src="profile.jpg"
-                alt="Spurthyraj R Gowda"
-              />
+              <div class="profile-placeholder">
+                <div>
+                  <strong>Your Photo</strong>
+                  <br />
+                  <br />
+                  We will add your professional
+                  photo here later.
+                </div>
+              </div>
 
               <div class="photo-note">
                 Software Developer • MCA Graduate
@@ -888,7 +1179,9 @@
           </div>
 
         </div>
+
       </div>
+
     </section>
 
 
@@ -901,23 +1194,32 @@
       <div class="container">
 
         <div class="section-heading">
-          <div class="section-label">01 — About Me</div>
 
-          <h2>Building software with a quality mindset.</h2>
+          <div class="section-label">
+            01 — About Me
+          </div>
+
+          <h2>
+            Building software with a quality mindset.
+          </h2>
 
           <p>
             I enjoy working across both development and testing,
             which helps me understand software from implementation
             as well as user experience perspectives.
           </p>
+
         </div>
 
 
         <div class="about-grid">
 
+
           <div class="card">
 
-            <h3>Who I Am</h3>
+            <h3>
+              Who I Am
+            </h3>
 
             <p>
               I am an MCA graduate with hands-on exposure to software
@@ -946,7 +1248,9 @@
 
           <div class="card">
 
-            <h3>What I Bring</h3>
+            <h3>
+              What I Bring
+            </h3>
 
             <div class="about-points">
 
@@ -995,9 +1299,13 @@
 
         <div class="section-heading">
 
-          <div class="section-label">02 — Experience</div>
+          <div class="section-label">
+            02 — Experience
+          </div>
 
-          <h2>Where I've worked.</h2>
+          <h2>
+            Where I've worked.
+          </h2>
 
           <p>
             My professional experience and hands-on exposure.
@@ -1015,8 +1323,8 @@
             </h3>
 
             <div class="timeline-meta">
-              Hindustan Aeronautics Limited (HAL) — Aircraft Division
-              · Bengaluru · March 2026 – Present
+              Hindustan Aeronautics Limited (HAL) —
+              Aircraft Division · Bengaluru · March 2026 – Present
             </div>
 
             <ul>
@@ -1058,9 +1366,13 @@
 
         <div class="section-heading">
 
-          <div class="section-label">03 — Projects</div>
+          <div class="section-label">
+            03 — Projects
+          </div>
 
-          <h2>Things I've built.</h2>
+          <h2>
+            Things I've built.
+          </h2>
 
           <p>
             Selected academic and personal projects demonstrating
@@ -1091,6 +1403,7 @@
               story universes through an interactive web interface.
             </p>
 
+
             <div class="project-tags">
 
               <span class="project-tag">
@@ -1114,6 +1427,7 @@
               </span>
 
             </div>
+
 
             <div class="project-links">
 
@@ -1147,6 +1461,7 @@
               hands-free computer interaction.
             </p>
 
+
             <div class="project-tags">
 
               <span class="project-tag">
@@ -1170,6 +1485,7 @@
               </span>
 
             </div>
+
 
             <div class="project-links">
 
@@ -1202,9 +1518,13 @@
 
         <div class="section-heading">
 
-          <div class="section-label">04 — Skills</div>
+          <div class="section-label">
+            04 — Skills
+          </div>
 
-          <h2>My technical toolkit.</h2>
+          <h2>
+            My technical toolkit.
+          </h2>
 
           <p>
             A combination of development, testing, programming,
@@ -1219,7 +1539,9 @@
 
           <div class="card skill-group">
 
-            <h3>Software Development</h3>
+            <h3>
+              Software Development
+            </h3>
 
             <div class="skill-tags">
 
@@ -1239,14 +1561,18 @@
 
           <div class="card skill-group">
 
-            <h3>Programming</h3>
+            <h3>
+              Programming
+            </h3>
 
             <div class="skill-tags">
 
               <span class="skill">Python</span>
               <span class="skill">Java</span>
               <span class="skill">JavaScript</span>
-              <span class="skill">Object-Oriented Programming</span>
+              <span class="skill">
+                Object-Oriented Programming
+              </span>
 
             </div>
 
@@ -1255,7 +1581,9 @@
 
           <div class="card skill-group">
 
-            <h3>Software Testing</h3>
+            <h3>
+              Software Testing
+            </h3>
 
             <div class="skill-tags">
 
@@ -1277,16 +1605,35 @@
 
           <div class="card skill-group">
 
-            <h3>Automation & API</h3>
+            <h3>
+              Automation & API
+            </h3>
 
             <div class="skill-tags">
 
-              <span class="skill">Selenium WebDriver</span>
-              <span class="skill">Web Element Identification</span>
-              <span class="skill">REST APIs</span>
-              <span class="skill">API Testing</span>
-              <span class="skill">PyTest</span>
-              <span class="skill">Page Object Model</span>
+              <span class="skill">
+                Selenium WebDriver
+              </span>
+
+              <span class="skill">
+                Web Element Identification
+              </span>
+
+              <span class="skill">
+                REST APIs
+              </span>
+
+              <span class="skill">
+                API Testing
+              </span>
+
+              <span class="skill">
+                PyTest
+              </span>
+
+              <span class="skill">
+                Page Object Model
+              </span>
 
             </div>
 
@@ -1295,14 +1642,27 @@
 
           <div class="card skill-group">
 
-            <h3>Database</h3>
+            <h3>
+              Database
+            </h3>
 
             <div class="skill-tags">
 
-              <span class="skill">SQL</span>
-              <span class="skill">MySQL</span>
-              <span class="skill">MongoDB</span>
-              <span class="skill">Database Testing</span>
+              <span class="skill">
+                SQL
+              </span>
+
+              <span class="skill">
+                MySQL
+              </span>
+
+              <span class="skill">
+                MongoDB
+              </span>
+
+              <span class="skill">
+                Database Testing
+              </span>
 
             </div>
 
@@ -1311,7 +1671,9 @@
 
           <div class="card skill-group">
 
-            <h3>Tools & Methodologies</h3>
+            <h3>
+              Tools & Methodologies
+            </h3>
 
             <div class="skill-tags">
 
@@ -1346,9 +1708,13 @@
 
         <div class="section-heading">
 
-          <div class="section-label">05 — Education</div>
+          <div class="section-label">
+            05 — Education
+          </div>
 
-          <h2>Academic background.</h2>
+          <h2>
+            Academic background.
+          </h2>
 
         </div>
 
@@ -1456,10 +1822,10 @@
               GitHub
             </a>
 
-            <!-- Replace # with your LinkedIn URL -->
+            <!-- Add LinkedIn URL later -->
+
             <a
               href="#"
-              target="_blank"
               class="btn btn-secondary"
             >
               LinkedIn
@@ -1487,7 +1853,8 @@
       <div class="footer-inner">
 
         <div>
-          © 2026 Spurthyraj R Gowda. Built with HTML, CSS & JavaScript.
+          © 2026 Spurthyraj R Gowda.
+          Built with HTML, CSS & JavaScript.
         </div>
 
         <div class="socials">
@@ -1520,201 +1887,36 @@
 
   <script>
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
 
     menuBtn.addEventListener("click", function () {
+
       navLinks.classList.toggle("open");
+
     });
 
 
     // Close mobile menu after clicking a link
 
-    document.querySelectorAll(".nav-links a").forEach(function (link) {
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(function (link) {
 
-      link.addEventListener("click", function () {
-        navLinks.classList.remove("open");
+        link.addEventListener("click", function () {
+
+          navLinks.classList.remove("open");
+
+        });
+
       });
-
-    });
 
   </script>
 
-</body>
-</html>
-    <style>
-        body{
-            margin:0;
-            font-family: Arial, sans-serif;
-            background-color:#f5f5f5;
-            color:#333;
-            line-height:1.6;
-        }
-
-        header{
-            background-color:#ffffff;
-            padding:60px 20px;
-            text-align:center;
-            box-shadow:0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        header h1{
-            margin:0;
-            font-size:40px;
-        }
-
-        header p{
-            font-size:20px;
-            color:#666;
-        }
-
-        .btn{
-            display:inline-block;
-            margin:10px;
-            padding:12px 24px;
-            background-color:#0056d2;
-            color:white;
-            text-decoration:none;
-            border-radius:5px;
-        }
-
-        section{
-            max-width:1000px;
-            margin:30px auto;
-            padding:30px;
-            background:white;
-            border-radius:10px;
-            box-shadow:0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        h2{
-            color:#0056d2;
-        }
-
-        .project{
-            margin-bottom:30px;
-        }
-
-        footer{
-            text-align:center;
-            padding:20px;
-            color:#666;
-        }
-
-        ul{
-            padding-left:20px;
-        }
-    </style>
-</head>
-
-<body>
-
-<header>
-    <h1>SPURTHY RAJ R GOWDA</h1>
-
-    <p>Front-End Developer | MCA Student</p>
-
-    <a href="#" class="btn">Download Resume</a>
-
-    <a href="#projects" class="btn">View Projects</a>
-</header>
-
-<section>
-    <h2>About Me</h2>
-
-    <p>
-        Front-End Developer with hands-on experience through internships and
-        academic projects. Passionate about building responsive applications,
-        creating intuitive user experiences, and exploring AI-powered solutions.
-    </p>
-</section>
-
-<section>
-    <h2>Experience</h2>
-
-    <h3>HAL – Aircraft Division</h3>
-
-    <p><strong>Front-End Developer Intern</strong></p>
-
-    <ul>
-        <li>Developing responsive interfaces using HTML, CSS, and JavaScript.</li>
-        <li>Designing dynamic components to improve usability.</li>
-    </ul>
-
-    <h3>Innovaskill Technologies</h3>
-
-    <p><strong>Front-End Intern</strong></p>
-
-    <ul>
-        <li>Developed the Blood Bank Management System frontend using React.</li>
-        <li>Integrated APIs and dynamic data into the interface.</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Skills</h2>
-
-    <p>
-        HTML • CSS • JavaScript • React • Angular • FastAPI • MongoDB • SQL • Java • Python
-    </p>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-        <h3>GestureVoice Assist System</h3>
-
-        <p>
-            A touchless human-computer interaction system using gestures and
-            voice commands for real-time computer control.
-        </p>
-
-        <p>
-            <strong>Tech Stack:</strong>
-            React, FastAPI, OpenCV, MediaPipe, Web Speech API
-        </p>
-    </div>
-
-    <div class="project">
-        <h3>ComicWave – AI Powered Comic Storytelling Platform</h3>
-
-        <p>
-            An AI-powered platform capable of generating comic panels from
-            user-provided stories and characters.
-        </p>
-
-        <p>
-            <strong>Tech Stack:</strong>
-            React, TypeScript, FastAPI, MongoDB
-        </p>
-    </div>
-</section>
-
-<section>
-    <h2>Achievements</h2>
-
-    <ul>
-        <li>3rd Place – State Level School Olympics (Shot Put)</li>
-        <li>Throwball Team Captain</li>
-        <li>Deputy Sports Representative</li>
-        <li>South Zone Sports Representation</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Contact</h2>
-
-    <p>Email: spurthygowda0810@gmail.com</p>
-
-    <p>Phone: 8660736979</p>
-
-    <p>GitHub: github.com/spurthygowda08</p>
-</section>
-
-<footer>
-    <p>© 2026 Spurthyraj R Gowda</p>
-</footer>
 
 </body>
 </html>
