@@ -11,11 +11,6 @@
     content="Portfolio of Spurthyraj R Gowda — Full Stack Developer, MERN Stack Developer, and QA & Automation enthusiast."
   />
 
-  <meta name="author" content="Spurthyraj R Gowda" />
-
-  <!-- =========================
-       GOOGLE FONTS
-  ========================== -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
@@ -23,9 +18,9 @@
 
   <style>
 
-    /* =====================================================
+    /* =========================================================
        RESET
-    ====================================================== */
+    ========================================================= */
 
     * {
       margin: 0;
@@ -35,6 +30,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 75px;
     }
 
     body {
@@ -43,9 +39,7 @@
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
-      transition:
-        background 0.35s ease,
-        color 0.35s ease;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
     a {
@@ -54,77 +48,87 @@
     }
 
     button {
-      font-family: inherit;
+      font: inherit;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
 
-    /* =====================================================
-       THEME VARIABLES
-    ====================================================== */
+    /* =========================================================
+       THEME
+       BLUE + WHITE ONLY
+       NO PURPLE
+    ========================================================= */
 
     :root {
-      --bg: #06090f;
-      --bg-secondary: #0a1019;
-      --bg-soft: #0d1420;
+      --bg: #05080d;
+      --bg-2: #080d15;
+      --bg-3: #0c131d;
 
-      --card: rgba(15, 23, 36, 0.82);
-      --card-hover: rgba(20, 30, 45, 0.95);
+      --text: #f4f7fb;
+      --text-soft: #d6e0ec;
+      --muted: #8d9eb3;
 
-      --text: #f1f5f9;
-      --text-soft: #d8e1ec;
-      --muted: #91a1b5;
+      --blue: #61b5ff;
+      --blue-2: #8bbcff;
+      --blue-dark: #10253c;
 
-      --primary: #62b5f7;
-      --primary-bright: #70b7ff;
-      --secondary: #8b7cff;
-
-      --green: #38d39f;
+      --green: #35d3a0;
 
       --border: rgba(255, 255, 255, 0.09);
+      --border-blue: rgba(97, 181, 255, 0.25);
 
-      --shadow: rgba(0, 0, 0, 0.35);
+      --shadow: rgba(0, 0, 0, 0.45);
     }
 
     body.light-theme {
-      --bg: #f5f7fb;
-      --bg-secondary: #edf1f7;
-      --bg-soft: #ffffff;
+      --bg: #f4f7fb;
+      --bg-2: #edf2f8;
+      --bg-3: #ffffff;
 
-      --card: rgba(255, 255, 255, 0.88);
-      --card-hover: #ffffff;
+      --text: #101923;
+      --text-soft: #263545;
+      --muted: #64758a;
 
-      --text: #111827;
-      --text-soft: #253247;
-      --muted: #64748b;
+      --blue: #1676d2;
+      --blue-2: #4a9be8;
+      --blue-dark: #dceeff;
 
-      --border: rgba(15, 23, 42, 0.1);
+      --green: #0fa878;
 
-      --shadow: rgba(15, 23, 42, 0.1);
+      --border: rgba(15, 23, 42, 0.10);
+      --border-blue: rgba(22, 118, 210, 0.20);
+
+      --shadow: rgba(15, 23, 42, 0.12);
     }
 
-    /* =====================================================
+
+    /* =========================================================
        COMMON
-    ====================================================== */
+    ========================================================= */
 
     .container {
       width: min(1400px, 92%);
       margin: 0 auto;
     }
 
-    /* =====================================================
+    .section-inner {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
        NAVBAR
-    ====================================================== */
+    ========================================================= */
 
     header {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      inset: 0 0 auto 0;
       z-index: 1000;
 
-      background: rgba(6, 9, 15, 0.78);
+      height: 70px;
+
+      background: rgba(5, 8, 13, 0.78);
+
       backdrop-filter: blur(18px);
 
       border-bottom: 1px solid var(--border);
@@ -135,11 +139,11 @@
     }
 
     body.light-theme header {
-      background: rgba(245, 247, 251, 0.82);
+      background: rgba(244, 247, 251, 0.82);
     }
 
     nav {
-      height: 68px;
+      height: 70px;
 
       display: flex;
       align-items: center;
@@ -156,18 +160,19 @@
     }
 
     .logo span {
-      color: var(--primary);
+      color: var(--blue);
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
+
       gap: 4px;
 
       list-style: none;
@@ -192,6 +197,7 @@
 
     .nav-links a:hover {
       color: var(--text);
+
       background: rgba(255, 255, 255, 0.05);
     }
 
@@ -199,29 +205,28 @@
       background: rgba(15, 23, 42, 0.05);
     }
 
-    /* =====================================================
-       THEME BUTTON
-    ====================================================== */
 
-    .theme-toggle {
+    /* =========================================================
+       THEME BUTTON
+    ========================================================= */
+
+    .theme-toggle,
+    .menu-btn {
       width: 42px;
       height: 42px;
 
-      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       border: 1px solid var(--border);
+      border-radius: 50%;
 
       background: rgba(255, 255, 255, 0.025);
 
       color: var(--text);
 
       cursor: pointer;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 1rem;
 
       transition:
         transform 0.25s ease,
@@ -230,55 +235,48 @@
 
     .theme-toggle:hover {
       transform: rotate(12deg);
+
       background: rgba(255, 255, 255, 0.07);
     }
-
-    /* =====================================================
-       MOBILE MENU
-    ====================================================== */
 
     .menu-btn {
       display: none;
 
-      width: 42px;
-      height: 42px;
-
-      background: transparent;
-
-      border: 1px solid var(--border);
       border-radius: 10px;
 
-      color: var(--text);
-
-      font-size: 1.3rem;
-
-      cursor: pointer;
+      font-size: 1.2rem;
     }
 
-    /* =====================================================
-       HERO
-    ====================================================== */
+
+    /* =========================================================
+       HOME
+    ========================================================= */
 
     #home {
-      min-height: calc(100vh - 68px);
+      min-height: 100vh;
 
       position: relative;
 
-      display: flex;
-      align-items: stretch;
-
       overflow: hidden;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 70px;
 
       background:
         radial-gradient(
           circle at 50% 45%,
-          rgba(57, 111, 164, 0.08),
-          transparent 32%
+          rgba(62, 137, 207, 0.10),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 88% 15%,
+          rgba(71, 126, 190, 0.08),
+          transparent 25%
         ),
         var(--bg);
     }
-
-    /* subtle blue glow */
 
     #home::before {
       content: "";
@@ -288,42 +286,40 @@
       width: 650px;
       height: 650px;
 
-      right: -260px;
+      right: -300px;
       top: -250px;
 
       border-radius: 50%;
 
-      background: rgba(83, 145, 220, 0.09);
+      background: rgba(72, 139, 205, 0.10);
 
-      filter: blur(110px);
+      filter: blur(120px);
 
       pointer-events: none;
     }
-
-    /* subtle purple glow */
 
     #home::after {
       content: "";
 
       position: absolute;
 
-      width: 550px;
-      height: 550px;
+      width: 500px;
+      height: 500px;
 
-      left: -280px;
+      left: -300px;
       bottom: -300px;
 
       border-radius: 50%;
 
-      background: rgba(119, 91, 255, 0.07);
+      background: rgba(40, 105, 165, 0.08);
 
-      filter: blur(110px);
+      filter: blur(120px);
 
       pointer-events: none;
     }
 
-    .hero-wrapper {
-      min-height: calc(100vh - 68px);
+    .home-wrapper {
+      min-height: calc(100vh - 70px);
 
       display: flex;
       flex-direction: column;
@@ -332,51 +328,57 @@
       z-index: 2;
     }
 
-    .hero {
+
+    /* =========================================================
+       HOME MAIN
+    ========================================================= */
+
+    .home-main {
       flex: 1;
 
       display: grid;
 
       grid-template-columns:
-        minmax(280px, 0.9fr)
-        minmax(300px, 0.8fr)
-        minmax(350px, 1.1fr);
+        minmax(280px, 0.95fr)
+        minmax(300px, 0.78fr)
+        minmax(330px, 1.05fr);
 
       align-items: center;
 
-      gap: 35px;
+      gap: 28px;
 
-      padding: 50px 0 30px;
+      padding: 40px 0 25px;
     }
 
-    /* =====================================================
-       HERO LEFT
-    ====================================================== */
 
-    .hero-left {
+    /* =========================================================
+       HOME LEFT
+    ========================================================= */
+
+    .home-left {
       position: relative;
       z-index: 3;
     }
 
-    .hero-intro {
+    .home-intro {
       display: flex;
       align-items: center;
 
-      gap: 10px;
+      gap: 11px;
 
       margin-bottom: 18px;
 
       color: var(--muted);
 
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 700;
 
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
 
       text-transform: uppercase;
     }
 
-    .hero-intro::before {
+    .home-intro::before {
       content: "";
 
       width: 9px;
@@ -387,38 +389,38 @@
       background: var(--green);
 
       box-shadow:
-        0 0 15px rgba(56, 211, 159, 0.8);
+        0 0 15px rgba(53, 211, 160, 0.8);
     }
 
-    .hero-name {
+    .home-name {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(4rem, 6.2vw, 7.2rem);
+      font-size: clamp(4.5rem, 7vw, 8rem);
 
       line-height: 0.82;
 
-      letter-spacing: -0.075em;
+      letter-spacing: -0.085em;
 
       text-transform: uppercase;
 
       margin-bottom: 32px;
     }
 
-    .hero-name .white {
+    .home-name .white {
       display: block;
 
       color: var(--text);
     }
 
-    .hero-name .gradient {
+    .home-name .blue {
       display: block;
 
       background:
         linear-gradient(
           100deg,
-          #58b5f8,
-          #719cff 50%,
-          #8b7cff
+          #56b4f8 0%,
+          #73adff 55%,
+          #a6d5ff 100%
         );
 
       -webkit-background-clip: text;
@@ -427,50 +429,52 @@
       color: transparent;
     }
 
-    .hero-description {
-      max-width: 470px;
+    .home-description {
+      max-width: 500px;
 
       color: var(--muted);
 
-      font-size: 0.98rem;
+      font-size: 0.95rem;
 
       line-height: 1.85;
 
       margin-bottom: 28px;
     }
 
-    .hero-buttons {
+    .home-buttons {
       display: flex;
+
       flex-wrap: wrap;
 
       gap: 10px;
     }
 
-    /* =====================================================
+
+    /* =========================================================
        BUTTONS
-    ====================================================== */
+    ========================================================= */
 
     .btn {
+      min-height: 46px;
+
       display: inline-flex;
 
       align-items: center;
       justify-content: center;
 
-      min-height: 46px;
-
-      padding: 0 18px;
+      padding: 0 19px;
 
       border-radius: 10px;
 
       border: 1px solid var(--border);
 
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
 
       transition:
         transform 0.25s ease,
         background 0.25s ease,
-        border 0.25s ease;
+        border-color 0.25s ease;
     }
 
     .btn:hover {
@@ -478,37 +482,50 @@
     }
 
     .btn-primary {
-      color: #07101a;
+      color: #06101a;
 
       border: none;
 
       background:
         linear-gradient(
           135deg,
-          var(--primary),
-          var(--secondary)
+          #58b5f8,
+          #82b9ff
         );
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.025);
       color: var(--text);
+
+      background: rgba(255, 255, 255, 0.025);
     }
 
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.07);
+
+      border-color: var(--border-blue);
     }
 
-    /* =====================================================
-       HERO PHOTO
-    ====================================================== */
+    body.light-theme .btn-secondary {
+      background: rgba(15, 23, 42, 0.025);
+    }
 
-    .hero-center {
+    body.light-theme .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.06);
+    }
+
+
+    /* =========================================================
+       CENTER PHOTO
+    ========================================================= */
+
+    .home-photo {
+      min-height: 560px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
-
-      min-height: 500px;
 
       position: relative;
     }
@@ -516,46 +533,47 @@
     .photo-glow {
       position: absolute;
 
-      width: 330px;
-      height: 420px;
+      width: 360px;
+      height: 480px;
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           ellipse,
-          rgba(74, 137, 201, 0.15),
+          rgba(76, 151, 220, 0.18),
           transparent 68%
         );
 
-      filter: blur(35px);
+      filter: blur(38px);
 
       pointer-events: none;
     }
 
     .profile-card {
-      width: min(330px, 90%);
+      width: min(350px, 92%);
 
       padding: 10px;
 
       position: relative;
+
       z-index: 2;
 
-      border-radius: 32px;
+      border-radius: 34px;
 
       background:
         linear-gradient(
           145deg,
-          rgba(75, 140, 199, 0.23),
-          rgba(139, 124, 255, 0.13)
+          rgba(67, 130, 184, 0.25),
+          rgba(28, 49, 71, 0.48)
         );
 
-      border: 1px solid rgba(123, 177, 225, 0.16);
+      border: 1px solid rgba(116, 177, 225, 0.22);
 
       box-shadow:
-        0 35px 80px rgba(0, 0, 0, 0.35);
+        0 40px 90px rgba(0, 0, 0, 0.42);
 
-      transform: rotate(-2deg);
+      transform: rotate(-2.5deg);
 
       transition:
         transform 0.45s ease,
@@ -568,119 +586,155 @@
         translateY(-8px);
 
       box-shadow:
-        0 45px 90px rgba(0, 0, 0, 0.45);
+        0 50px 100px rgba(0, 0, 0, 0.50);
     }
 
-    .profile-placeholder {
+    .profile-photo {
       width: 100%;
 
       aspect-ratio: 0.78;
 
-      border-radius: 25px;
-
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      text-align: center;
+      overflow: hidden;
 
-      padding: 35px;
+      border-radius: 27px;
 
       background:
         radial-gradient(
-          circle at 50% 30%,
-          rgba(93, 157, 218, 0.17),
+          circle at 50% 28%,
+          rgba(89, 157, 216, 0.16),
           transparent 45%
         ),
-        #0d1523;
+        #0b1420;
 
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
 
       color: var(--muted);
 
-      font-size: 0.9rem;
+      text-align: center;
     }
 
-    .profile-placeholder strong {
+    .profile-photo-placeholder {
+      padding: 30px;
+    }
+
+    .profile-photo-placeholder .icon {
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 18px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(111, 177, 228, 0.20);
+
+      background: rgba(78, 142, 198, 0.08);
+
+      color: #a7c9e9;
+
+      font-size: 1.2rem;
+    }
+
+    .profile-photo strong {
       display: block;
 
       color: var(--text);
 
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: 1rem;
+      font-size: 1.05rem;
 
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
-    .photo-note {
-      padding: 12px 5px 5px;
+    .profile-photo p {
+      color: var(--muted);
+
+      font-size: 0.86rem;
+
+      line-height: 1.6;
+    }
+
+    .photo-caption {
+      padding: 13px 5px 5px;
 
       text-align: center;
 
       color: var(--muted);
 
-      font-size: 0.68rem;
+      font-size: 0.67rem;
+      font-weight: 600;
 
-      letter-spacing: 0.08em;
+      letter-spacing: 0.10em;
 
       text-transform: uppercase;
     }
 
-    /* =====================================================
-       HERO RIGHT
-    ====================================================== */
 
-    .hero-right {
+    /* =========================================================
+       HOME RIGHT
+    ========================================================= */
+
+    .home-right {
       position: relative;
+
       z-index: 3;
 
-      padding-left: 15px;
+      padding-left: 12px;
     }
 
-    .hero-number {
+    .home-number {
       margin-bottom: 18px;
 
       color: var(--muted);
 
-      font-size: 0.74rem;
+      font-size: 0.72rem;
 
       font-weight: 700;
 
-      letter-spacing: 0.18em;
+      letter-spacing: 0.19em;
 
       text-transform: uppercase;
     }
 
-    .hero-role {
+    .home-role {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(3.3rem, 5.4vw, 6.3rem);
+      font-size: clamp(3.8rem, 5.7vw, 6.7rem);
 
-      line-height: 0.83;
+      line-height: 0.82;
 
-      letter-spacing: -0.075em;
+      letter-spacing: -0.085em;
 
       text-transform: uppercase;
 
-      margin-bottom: 28px;
+      margin-bottom: 27px;
     }
 
-    .hero-role .role-white {
+    .home-role .role-white {
       display: block;
 
       color: var(--text);
     }
 
-    .hero-role .role-gradient {
+    .home-role .role-blue {
       display: block;
 
       background:
         linear-gradient(
           100deg,
-          #57b6fa,
-          #7397ff 50%,
-          #8b7cff
+          #55b4f7 0%,
+          #74aeff 60%,
+          #a5d4ff 100%
         );
 
       -webkit-background-clip: text;
@@ -689,10 +743,10 @@
       color: transparent;
     }
 
-    .hero-subrole {
+    .home-subrole {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(1.2rem, 2vw, 1.75rem);
+      font-size: clamp(1.15rem, 1.8vw, 1.65rem);
 
       font-weight: 600;
 
@@ -703,10 +757,10 @@
       margin-bottom: 22px;
     }
 
-    .hero-specialties {
-      color: var(--primary);
+    .home-specialties {
+      color: var(--blue);
 
-      font-size: 0.78rem;
+      font-size: 0.76rem;
 
       font-weight: 700;
 
@@ -717,25 +771,28 @@
       margin-bottom: 20px;
     }
 
-    .hero-right-description {
+    .home-right-description {
       max-width: 500px;
 
       color: var(--muted);
 
-      font-size: 0.95rem;
+      font-size: 0.94rem;
 
       line-height: 1.8;
     }
 
-    /* =====================================================
-       HERO BOTTOM BAR
-    ====================================================== */
 
-    .hero-bottom {
-      min-height: 108px;
+    /* =========================================================
+       HOME BOTTOM
+    ========================================================= */
+
+    .home-bottom {
+      min-height: 105px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
       border-top: 1px solid var(--border);
@@ -743,65 +800,71 @@
       background:
         linear-gradient(
           90deg,
-          rgba(10, 16, 26, 0.35),
-          rgba(8, 13, 22, 0.8)
+          rgba(9, 16, 25, 0.28),
+          rgba(7, 12, 20, 0.72)
         );
     }
 
-    body.light-theme .hero-bottom {
-      background: rgba(255, 255, 255, 0.4);
+    body.light-theme .home-bottom {
+      background: rgba(255, 255, 255, 0.38);
     }
 
     .status-block {
       display: flex;
+
       flex-direction: column;
 
       gap: 3px;
     }
 
-    .status-label {
+    .status-label,
+    .talk-small {
       color: var(--muted);
 
-      font-size: 0.67rem;
+      font-size: 0.64rem;
 
       font-weight: 700;
 
-      letter-spacing: 0.2em;
+      letter-spacing: 0.20em;
 
       text-transform: uppercase;
     }
 
     .status-text {
       display: flex;
+
       align-items: center;
 
       gap: 10px;
 
       color: var(--text);
 
-      font-size: 0.92rem;
+      font-size: 0.91rem;
 
       font-weight: 600;
     }
 
     .status-text strong {
-      color: var(--primary);
+      color: var(--blue);
     }
 
     .status-dot {
       width: 9px;
       height: 9px;
 
+      flex: 0 0 auto;
+
       border-radius: 50%;
 
       background: var(--green);
 
       box-shadow:
-        0 0 12px rgba(56, 211, 159, 0.8);
+        0 0 12px rgba(53, 211, 160, 0.8);
     }
 
     .talk-block {
       display: flex;
+
       align-items: center;
 
       gap: 18px;
@@ -811,73 +874,69 @@
       text-align: right;
     }
 
-    .talk-small {
-      color: var(--muted);
-
-      font-size: 0.65rem;
-
-      font-weight: 700;
-
-      letter-spacing: 0.2em;
-
-      text-transform: uppercase;
-    }
-
     .talk-big {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: 1.7rem;
+      color: var(--text);
+
+      font-size: 1.75rem;
 
       font-weight: 700;
 
       line-height: 1;
-
-      color: var(--text);
     }
 
     .talk-button {
       width: 64px;
       height: 64px;
 
-      border-radius: 50%;
-
       display: flex;
+
       align-items: center;
       justify-content: center;
+
+      border-radius: 50%;
 
       background:
         linear-gradient(
           135deg,
-          var(--primary),
-          var(--secondary)
+          #58b5f8,
+          #8abfff
         );
 
-      color: #08111c;
+      color: #06101a;
 
       font-size: 1.4rem;
-      font-weight: 700;
+
+      font-weight: 800;
 
       box-shadow:
-        0 10px 35px rgba(86, 157, 255, 0.2);
+        0 12px 35px rgba(72, 157, 230, 0.22);
 
-      transition:
-        transform 0.25s ease;
+      transition: transform 0.25s ease;
     }
 
-    .talk-button:hover {
+    .talk-block:hover .talk-button {
       transform:
         translateY(-4px)
         rotate(8deg);
     }
 
-    /* =====================================================
+
+    /* =========================================================
        GENERAL SECTIONS
-    ====================================================== */
+    ========================================================= */
 
     section:not(#home) {
-      padding: 110px 0;
+      padding: 120px 0;
 
       position: relative;
+
+      background: var(--bg);
+    }
+
+    section:not(#home):nth-child(even) {
+      background: var(--bg-2);
     }
 
     .section-heading {
@@ -885,51 +944,52 @@
     }
 
     .section-label {
-      color: var(--primary);
+      color: var(--blue);
 
-      font-size: 0.72rem;
+      font-size: 0.70rem;
 
       font-weight: 700;
 
-      letter-spacing: 0.2em;
+      letter-spacing: 0.20em;
 
       text-transform: uppercase;
 
-      margin-bottom: 10px;
+      margin-bottom: 11px;
     }
 
     .section-heading h2 {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-size: clamp(2.3rem, 4vw, 4.2rem);
 
       line-height: 1;
 
-      letter-spacing: -0.06em;
+      letter-spacing: -0.065em;
 
       color: var(--text);
     }
 
     .section-heading p {
-      max-width: 700px;
+      max-width: 720px;
+
+      margin-top: 15px;
 
       color: var(--muted);
-
-      margin-top: 14px;
 
       font-size: 0.95rem;
     }
 
-    /* =====================================================
+
+    /* =========================================================
        CARDS
-    ====================================================== */
+    ========================================================= */
 
     .card {
       background:
         linear-gradient(
           145deg,
-          rgba(15, 23, 36, 0.9),
-          rgba(10, 16, 26, 0.92)
+          rgba(15, 24, 36, 0.88),
+          rgba(8, 14, 23, 0.94)
         );
 
       border: 1px solid var(--border);
@@ -943,45 +1003,45 @@
 
       transition:
         transform 0.3s ease,
-        border 0.3s ease,
-        background 0.3s ease;
+        border-color 0.3s ease;
     }
 
     body.light-theme .card {
       background:
         linear-gradient(
           145deg,
-          rgba(255, 255, 255, 0.95),
-          rgba(248, 250, 252, 0.95)
+          rgba(255, 255, 255, 0.97),
+          rgba(248, 250, 253, 0.97)
         );
     }
 
     .card:hover {
       transform: translateY(-5px);
 
-      border-color:
-        rgba(98, 181, 247, 0.28);
+      border-color: var(--border-blue);
     }
 
     .card h3 {
       font-family: "Space Grotesk", sans-serif;
 
+      color: var(--text);
+
       font-size: 1.25rem;
 
       margin-bottom: 14px;
-
-      color: var(--text);
     }
 
     .card p {
       color: var(--muted);
 
-      font-size: 0.94rem;
+      font-size: 0.93rem;
     }
 
-    /* =====================================================
+
+    /* =========================================================
        ABOUT
-    ====================================================== */
+       SEPARATE FROM HOME
+    ========================================================= */
 
     .about-grid {
       display: grid;
@@ -1000,7 +1060,7 @@
     }
 
     .about-point {
-      padding: 13px 14px;
+      padding: 14px;
 
       border-radius: 10px;
 
@@ -1008,16 +1068,29 @@
 
       color: var(--text-soft);
 
-      font-size: 0.88rem;
+      font-size: 0.87rem;
+
+      border: 1px solid transparent;
+
+      transition:
+        border 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .about-point:hover {
+      transform: translateX(4px);
+
+      border-color: var(--border-blue);
     }
 
     body.light-theme .about-point {
       background: rgba(15, 23, 42, 0.035);
     }
 
-    /* =====================================================
+
+    /* =========================================================
        EXPERIENCE
-    ====================================================== */
+    ========================================================= */
 
     .timeline {
       position: relative;
@@ -1027,7 +1100,7 @@
       padding-left: 35px;
 
       border-left:
-        1px dashed rgba(255, 255, 255, 0.15);
+        1px dashed rgba(255, 255, 255, 0.16);
     }
 
     body.light-theme .timeline {
@@ -1054,29 +1127,25 @@
 
       border-radius: 50%;
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          var(--secondary)
-        );
+      background: var(--blue);
 
       box-shadow:
-        0 0 0 5px rgba(98, 181, 247, 0.1);
+        0 0 0 5px rgba(97, 181, 255, 0.10),
+        0 0 18px rgba(97, 181, 255, 0.35);
     }
 
     .timeline-item h3 {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: 1.3rem;
-
       color: var(--text);
+
+      font-size: 1.3rem;
     }
 
     .timeline-meta {
-      color: var(--primary);
+      color: var(--blue);
 
-      font-size: 0.83rem;
+      font-size: 0.82rem;
 
       margin: 5px 0 14px;
     }
@@ -1091,9 +1160,10 @@
       margin-bottom: 8px;
     }
 
-    /* =====================================================
+
+    /* =========================================================
        PROJECTS
-    ====================================================== */
+    ========================================================= */
 
     .projects-grid {
       display: grid;
@@ -1107,13 +1177,14 @@
       min-height: 320px;
 
       display: flex;
+
       flex-direction: column;
     }
 
     .project-number {
-      color: var(--primary);
+      color: var(--blue);
 
-      font-size: 0.7rem;
+      font-size: 0.69rem;
 
       font-weight: 700;
 
@@ -1136,6 +1207,7 @@
 
     .project-tags {
       display: flex;
+
       flex-wrap: wrap;
 
       gap: 7px;
@@ -1149,11 +1221,18 @@
       border-radius: 6px;
 
       background:
-        rgba(98, 181, 247, 0.08);
+        rgba(97, 181, 255, 0.08);
 
       color: #a8d8fa;
 
       font-size: 0.73rem;
+    }
+
+    body.light-theme .project-tag {
+      color: #1767a8;
+
+      background:
+        rgba(22, 118, 210, 0.08);
     }
 
     .project-links {
@@ -1163,7 +1242,7 @@
     }
 
     .project-links a {
-      color: var(--primary);
+      color: var(--blue);
 
       font-size: 0.84rem;
 
@@ -1174,9 +1253,10 @@
       text-decoration: underline;
     }
 
-    /* =====================================================
+
+    /* =========================================================
        SKILLS
-    ====================================================== */
+    ========================================================= */
 
     .skills-grid {
       display: grid;
@@ -1188,8 +1268,6 @@
 
     .skill-group h3 {
       margin-bottom: 15px;
-
-      font-size: 1rem;
     }
 
     .skill-tags {
@@ -1203,8 +1281,7 @@
     .skill {
       padding: 7px 11px;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
       border-radius: 999px;
 
@@ -1213,26 +1290,26 @@
 
       color: var(--text-soft);
 
-      font-size: 0.8rem;
+      font-size: 0.79rem;
 
       transition:
         transform 0.2s ease,
-        border 0.2s ease,
+        border-color 0.2s ease,
         color 0.2s ease;
     }
 
     .skill:hover {
       transform: translateY(-2px);
 
-      border-color:
-        rgba(98, 181, 247, 0.4);
+      border-color: var(--border-blue);
 
-      color: var(--primary);
+      color: var(--blue);
     }
 
-    /* =====================================================
+
+    /* =========================================================
        EDUCATION
-    ====================================================== */
+    ========================================================= */
 
     .education-grid {
       display: grid;
@@ -1243,7 +1320,7 @@
     }
 
     .education-year {
-      color: var(--primary);
+      color: var(--blue);
 
       font-size: 0.78rem;
 
@@ -1260,9 +1337,10 @@
       margin-bottom: 4px;
     }
 
-    /* =====================================================
+
+    /* =========================================================
        CONTACT
-    ====================================================== */
+    ========================================================= */
 
     .contact-box {
       text-align: center;
@@ -1273,7 +1351,7 @@
     .contact-box h2 {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
 
       line-height: 0.95;
 
@@ -1300,9 +1378,10 @@
       gap: 12px;
     }
 
-    /* =====================================================
+
+    /* =========================================================
        FOOTER
-    ====================================================== */
+    ========================================================= */
 
     footer {
       border-top: 1px solid var(--border);
@@ -1312,6 +1391,8 @@
       color: var(--muted);
 
       font-size: 0.8rem;
+
+      background: var(--bg);
     }
 
     .footer-inner {
@@ -1331,12 +1412,13 @@
     }
 
     .socials a:hover {
-      color: var(--primary);
+      color: var(--blue);
     }
 
-    /* =====================================================
-       ANIMATIONS
-    ====================================================== */
+
+    /* =========================================================
+       ANIMATION
+    ========================================================= */
 
     .fade-up {
       animation:
@@ -1349,10 +1431,6 @@
 
     .delay-2 {
       animation-delay: 0.24s;
-    }
-
-    .delay-3 {
-      animation-delay: 0.36s;
     }
 
     @keyframes fadeUp {
@@ -1370,11 +1448,13 @@
         transform:
           translateY(0);
       }
+
     }
 
-    /* =====================================================
+
+    /* =========================================================
        TABLET
-    ====================================================== */
+    ========================================================= */
 
     @media (max-width: 1100px) {
 
@@ -1382,52 +1462,52 @@
         width: min(1200px, 94%);
       }
 
-      .hero {
+      .home-main {
+
         grid-template-columns:
-          1fr 0.8fr;
+          1fr 0.85fr;
 
         grid-template-areas:
-          "left center"
+          "left photo"
           "right right";
 
         padding-top: 55px;
       }
 
-      .hero-left {
+      .home-left {
         grid-area: left;
       }
 
-      .hero-center {
-        grid-area: center;
+      .home-photo {
+        grid-area: photo;
       }
 
-      .hero-right {
+      .home-right {
         grid-area: right;
 
-        padding-left: 0;
-
-        padding-bottom: 25px;
+        padding:
+          0 0 25px;
       }
 
-      .hero-role {
-        font-size: clamp(3.4rem, 8vw, 5.5rem);
+      .home-role {
+        font-size:
+          clamp(3.5rem, 8vw, 5.7rem);
       }
 
-      .hero-right-description {
-        max-width: 700px;
+      .home-right-description {
+        max-width: 720px;
       }
+
     }
 
-    /* =====================================================
+
+    /* =========================================================
        MOBILE
-    ====================================================== */
+    ========================================================= */
 
     @media (max-width: 800px) {
 
-      header {
-        position: sticky;
-      }
-
+      header,
       nav {
         height: 64px;
       }
@@ -1437,6 +1517,7 @@
       }
 
       .nav-links {
+
         display: none;
 
         position: absolute;
@@ -1451,7 +1532,7 @@
         flex-direction: column;
 
         background:
-          rgba(6, 9, 15, 0.98);
+          rgba(5, 8, 13, 0.98);
 
         border-bottom:
           1px solid var(--border);
@@ -1459,7 +1540,7 @@
 
       body.light-theme .nav-links {
         background:
-          rgba(245, 247, 251, 0.98);
+          rgba(244, 247, 251, 0.98);
       }
 
       .nav-links.open {
@@ -1467,35 +1548,37 @@
       }
 
       .nav-links a {
+        width: 100%;
+
         padding: 12px;
       }
 
       .menu-btn {
         display: flex;
-
-        align-items: center;
-        justify-content: center;
-      }
-
-      .hero-wrapper {
-        min-height: auto;
       }
 
       #home {
         min-height: auto;
+
+        padding-top: 64px;
       }
 
-      .hero {
+      .home-wrapper {
+        min-height: auto;
+      }
+
+      .home-main {
+
         min-height: auto;
 
         grid-template-columns: 1fr;
 
         grid-template-areas:
-          "center"
+          "photo"
           "left"
           "right";
 
-        gap: 35px;
+        gap: 40px;
 
         padding:
           65px 0 35px;
@@ -1503,57 +1586,55 @@
         text-align: center;
       }
 
-      .hero-center {
+      .home-photo {
+        grid-area: photo;
+
         min-height: auto;
-
-        order: 1;
       }
 
-      .hero-left {
-        order: 2;
+      .home-left {
+        grid-area: left;
       }
 
-      .hero-right {
-        order: 3;
+      .home-right {
+        grid-area: right;
       }
 
-      .hero-intro {
+      .home-intro {
         justify-content: center;
       }
 
-      .hero-name {
+      .home-name {
         font-size:
-          clamp(3.8rem, 15vw, 6rem);
-
-        line-height: 0.86;
+          clamp(3.7rem, 15vw, 6rem);
       }
 
-      .hero-description {
-        margin:
-          0 auto 28px;
+      .home-description,
+      .home-right-description {
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .hero-buttons {
+      .home-buttons {
         justify-content: center;
       }
 
-      .hero-role {
+      .home-role {
         font-size:
           clamp(3rem, 13vw, 5rem);
       }
 
-      .hero-specialties {
-        margin-top: 20px;
+      .profile-card {
+        width:
+          min(320px, 78%);
       }
 
-      .hero-right-description {
-        margin: auto;
-      }
+      .home-bottom {
 
-      .hero-bottom {
         min-height: auto;
 
-        padding: 25px 0;
+        padding:
+          25px 0;
 
         flex-direction: column;
 
@@ -1578,7 +1659,7 @@
       }
 
       section:not(#home) {
-        padding: 80px 0;
+        padding: 85px 0;
       }
 
       .footer-inner {
@@ -1586,15 +1667,18 @@
 
         text-align: center;
       }
+
     }
 
-    /* =====================================================
+
+    /* =========================================================
        SMALL MOBILE
-    ====================================================== */
+    ========================================================= */
 
     @media (max-width: 500px) {
 
-      .container {
+      .container,
+      .section-inner {
         width: 90%;
       }
 
@@ -1609,34 +1693,34 @@
       }
 
       .profile-card {
-        width: 240px;
+        width: 78%;
       }
 
-      .hero-name {
-        font-size: 3.7rem;
+      .home-name {
+        font-size: 3.6rem;
       }
 
-      .hero-role {
-        font-size: 3.1rem;
+      .home-role {
+        font-size: 3rem;
       }
 
-      .hero-subrole {
-        font-size: 1.15rem;
+      .home-subrole {
+        font-size: 1.1rem;
       }
 
-      .hero-buttons {
+      .home-buttons {
         width: 100%;
 
         flex-direction: column;
       }
 
-      .hero-buttons .btn {
+      .home-buttons .btn {
         width: 100%;
       }
 
       .talk-button {
-        width: 55px;
-        height: 55px;
+        width: 56px;
+        height: 56px;
       }
 
       .talk-big {
@@ -1654,6 +1738,7 @@
       .card {
         padding: 23px;
       }
+
     }
 
   </style>
@@ -1662,9 +1747,10 @@
 
 <body>
 
-  <!-- =====================================================
+
+  <!-- =======================================================
        NAVIGATION
-  ====================================================== -->
+  ======================================================== -->
 
   <header>
 
@@ -1675,6 +1761,7 @@
         <a href="#home" class="logo">
           SPURTHY<span>.</span>
         </a>
+
 
         <div class="nav-right">
 
@@ -1710,18 +1797,22 @@
 
           </ul>
 
+
           <button
             class="theme-toggle"
             id="themeToggle"
             aria-label="Toggle theme"
+            type="button"
           >
             ☾
           </button>
+
 
           <button
             class="menu-btn"
             id="menuBtn"
             aria-label="Open menu"
+            type="button"
           >
             ☰
           </button>
@@ -1735,59 +1826,61 @@
   </header>
 
 
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
 
   <main>
 
 
-    <!-- ===================================================
-         HERO
-    ==================================================== -->
+    <!-- =====================================================
+         HOME
+    ====================================================== -->
 
     <section id="home">
 
-      <div class="container hero-wrapper">
-
-        <div class="hero">
+      <div class="container home-wrapper">
 
 
-          <!-- =========================
+        <div class="home-main">
+
+
+          <!-- =================================================
                LEFT — NAME
-          ========================== -->
+          ================================================== -->
 
-          <div class="hero-left fade-up">
+          <div class="home-left fade-up">
 
-            <div class="hero-intro">
+            <div class="home-intro">
               HI, MY NAME IS
             </div>
 
-            <h1 class="hero-name">
+
+            <h1 class="home-name">
 
               <span class="white">
                 SPURTHY
               </span>
 
-              <span class="gradient">
+              <span class="blue">
                 RAJ R
               </span>
 
-              <span class="gradient">
+              <span class="blue">
                 GOWDA
               </span>
 
             </h1>
 
-            <p class="hero-description">
+
+            <p class="home-description">
 
               MCA graduate passionate about building practical
               software applications, solving problems, and creating
-              reliable digital experiences through development and testing.
+              reliable digital experiences through development
+              and testing.
 
             </p>
 
-            <div class="hero-buttons">
+
+            <div class="home-buttons">
 
               <a
                 href="#projects"
@@ -1795,6 +1888,7 @@
               >
                 View Projects
               </a>
+
 
               <a
                 href="#contact"
@@ -1808,86 +1902,112 @@
           </div>
 
 
-          <!-- =========================
-               CENTER — PHOTO
-          ========================== -->
 
-          <div class="hero-center fade-up delay-1">
+          <!-- =================================================
+               CENTER — PHOTO
+          ================================================== -->
+
+          <div class="home-photo fade-up delay-1">
 
             <div class="photo-glow"></div>
 
+
             <div class="profile-card">
+
 
               <!--
                 PHOTO WILL BE ADDED LATER.
 
-                When you have your photo:
-                1. Put the image in the same folder.
-                2. We will replace this placeholder
-                   with an <img> element.
+                When you are ready,
+                we will replace this placeholder
+                with your actual photo.
               -->
 
-              <div class="profile-placeholder">
+              <div class="profile-photo">
 
-                <div>
+
+                <div class="profile-photo-placeholder">
+
+                  <div class="icon">
+                    ✦
+                  </div>
+
 
                   <strong>
                     Your Photo
                   </strong>
 
-                  Professional photo
-                  <br />
 
-                  will be added here later.
+                  <p>
+                    Professional photo<br />
+                    will be added here later.
+                  </p>
 
                 </div>
 
               </div>
 
-              <div class="photo-note">
+
+              <div class="photo-caption">
+
                 Full Stack Developer • MCA Graduate
+
               </div>
+
 
             </div>
 
           </div>
 
 
-          <!-- =========================
+
+          <!-- =================================================
                RIGHT — PROFESSION
-          ========================== -->
+          ================================================== -->
 
-          <div class="hero-right fade-up delay-2">
+          <div class="home-right fade-up delay-2">
 
-            <div class="hero-number">
+
+            <div class="home-number">
+
               01 — FULL STACK DEVELOPMENT
+
             </div>
 
-            <h2 class="hero-role">
+
+            <h2 class="home-role">
 
               <span class="role-white">
                 FULL STACK
               </span>
 
-              <span class="role-gradient">
+              <span class="role-blue">
                 DEVELOPER
               </span>
 
             </h2>
 
-            <div class="hero-subrole">
+
+            <div class="home-subrole">
+
               & SOFTWARE ENGINEER
+
             </div>
 
-            <div class="hero-specialties">
+
+            <div class="home-specialties">
+
               WEB • MERN • QA • AUTOMATION
+
             </div>
 
-            <p class="hero-right-description">
+
+            <p class="home-right-description">
 
               Building clean, functional and reliable web
               applications with a focus on user experience,
-              development quality, testing, and continuous learning.
+              development quality, testing, debugging,
+              and continuous learning.
 
             </p>
 
@@ -1897,11 +2017,13 @@
         </div>
 
 
+
         <!-- =================================================
-             HERO BOTTOM
+             HOME BOTTOM BAR
         ================================================== -->
 
-        <div class="hero-bottom">
+        <div class="home-bottom">
+
 
           <div class="status-block">
 
@@ -1909,11 +2031,13 @@
               CURRENT STATUS
             </div>
 
+
             <div class="status-text">
 
               <span class="status-dot"></span>
 
               Open to
+
               <strong>
                 Full Stack & QA Opportunities
               </strong>
@@ -1921,6 +2045,7 @@
             </div>
 
           </div>
+
 
 
           <a
@@ -1940,11 +2065,13 @@
 
             </div>
 
+
             <div class="talk-button">
               ↗
             </div>
 
           </a>
+
 
         </div>
 
@@ -1953,31 +2080,39 @@
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- =====================================================
          ABOUT
-    ==================================================== -->
+         SEPARATE SECTION
+    ====================================================== -->
 
     <section id="about">
 
-      <div class="container">
+      <div class="section-inner">
+
 
         <div class="section-heading">
 
           <div class="section-label">
-            02 — About Me
+            02 — ABOUT ME
           </div>
+
 
           <h2>
             Building software with a quality mindset.
           </h2>
 
+
           <p>
-            I enjoy working across both development and testing,
-            which helps me understand software from implementation
-            as well as user experience perspectives.
+
+            I enjoy working across development and testing,
+            which helps me understand software from both
+            implementation and user experience perspectives.
+
           </p>
 
         </div>
+
 
 
         <div class="about-grid">
@@ -1989,29 +2124,42 @@
               Who I Am
             </h3>
 
+
             <p>
-              I am an MCA graduate with hands-on exposure to
-              software development and software testing through
-              internship and academic projects.
+
+              I am an MCA graduate with hands-on exposure
+              to software development and software testing
+              through internships and academic projects.
+
             </p>
+
 
             <br />
 
+
             <p>
+
               My interests include full-stack web development,
-              MERN stack technologies, Python, Java, automation
-              testing, and building reliable user-focused applications.
+              MERN stack technologies, Python, Java,
+              automation testing, and building reliable
+              user-focused applications.
+
             </p>
+
 
             <br />
 
+
             <p>
-              I am comfortable learning new technologies, debugging
-              problems, collaborating with teams, and working in
-              Agile/Scrum environments.
+
+              I am comfortable learning new technologies,
+              debugging problems, collaborating with teams,
+              and working in Agile/Scrum environments.
+
             </p>
 
           </div>
+
 
 
           <div class="card">
@@ -2020,31 +2168,39 @@
               What I Bring
             </h3>
 
+
             <div class="about-points">
+
 
               <div class="about-point">
                 💻 Full Stack Development
               </div>
 
+
               <div class="about-point">
                 ⚛️ MERN Stack & Web Development
               </div>
+
 
               <div class="about-point">
                 🧪 Manual & Automation Testing
               </div>
 
+
               <div class="about-point">
                 🐍 Python & Java
               </div>
+
 
               <div class="about-point">
                 🔧 Git & GitHub
               </div>
 
+
               <div class="about-point">
                 🚀 Agile & Scrum
               </div>
+
 
             </div>
 
@@ -2058,23 +2214,27 @@
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- =====================================================
          EXPERIENCE
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="experience">
 
-      <div class="container">
+      <div class="section-inner">
+
 
         <div class="section-heading">
 
           <div class="section-label">
-            03 — Experience
+            03 — EXPERIENCE
           </div>
+
 
           <h2>
             Where I've worked.
           </h2>
+
 
           <p>
             My professional experience and hands-on exposure.
@@ -2083,13 +2243,17 @@
         </div>
 
 
+
         <div class="timeline">
 
+
           <div class="timeline-item">
+
 
             <h3>
               Front-End Developer Intern
             </h3>
+
 
             <div class="timeline-meta">
 
@@ -2099,16 +2263,17 @@
 
             </div>
 
+
             <ul>
 
               <li>
-                Contributed to front-end development activities
-                for web-based applications.
+                Contributed to front-end development
+                activities for web-based applications.
               </li>
 
               <li>
-                Worked with web technologies to build and
-                improve user-facing application interfaces.
+                Worked with web technologies to build
+                and improve user-facing application interfaces.
               </li>
 
               <li>
@@ -2121,6 +2286,7 @@
 
           </div>
 
+
         </div>
 
       </div>
@@ -2128,30 +2294,38 @@
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- =====================================================
          PROJECTS
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="projects">
 
-      <div class="container">
+      <div class="section-inner">
+
 
         <div class="section-heading">
 
           <div class="section-label">
-            04 — Projects
+            04 — PROJECTS
           </div>
+
 
           <h2>
             Things I've built.
           </h2>
 
+
           <p>
-            Selected academic and personal projects demonstrating
-            my development, problem-solving, and testing skills.
+
+            Selected academic and personal projects
+            demonstrating my development,
+            problem-solving, and testing skills.
+
           </p>
 
         </div>
+
 
 
         <div class="projects-grid">
@@ -2161,19 +2335,25 @@
 
           <div class="card project-card">
 
+
             <div class="project-number">
               PROJECT 01
             </div>
+
 
             <h3>
               ComicWave
             </h3>
 
+
             <p>
+
               An AI-powered comic content generation platform
               designed to create quick comics and multi-episode
               story universes through an interactive web interface.
+
             </p>
+
 
             <div class="project-tags">
 
@@ -2199,6 +2379,7 @@
 
             </div>
 
+
             <div class="project-links">
 
               <a
@@ -2211,26 +2392,34 @@
 
             </div>
 
+
           </div>
+
 
 
           <!-- PROJECT 02 -->
 
           <div class="card project-card">
 
+
             <div class="project-number">
               PROJECT 02
             </div>
+
 
             <h3>
               GestureVoice Assist
             </h3>
 
+
             <p>
+
               A Python-based assistive application that uses
               hand gestures and voice commands to enable
               hands-free computer interaction.
+
             </p>
+
 
             <div class="project-tags">
 
@@ -2256,6 +2445,7 @@
 
             </div>
 
+
             <div class="project-links">
 
               <a
@@ -2268,6 +2458,7 @@
 
             </div>
 
+
           </div>
 
 
@@ -2278,42 +2469,48 @@
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- =====================================================
          SKILLS
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="skills">
 
-      <div class="container">
+      <div class="section-inner">
+
 
         <div class="section-heading">
 
           <div class="section-label">
-            05 — Skills
+            05 — SKILLS
           </div>
+
 
           <h2>
             My technical toolkit.
           </h2>
 
+
           <p>
-            A combination of development, testing, programming,
-            databases, and collaboration skills.
+
+            Development, programming, testing,
+            databases, automation, and collaboration skills.
+
           </p>
 
         </div>
 
 
+
         <div class="skills-grid">
 
-
-          <!-- DEVELOPMENT -->
 
           <div class="card skill-group">
 
             <h3>
               Full Stack Development
             </h3>
+
 
             <div class="skill-tags">
 
@@ -2331,13 +2528,13 @@
           </div>
 
 
-          <!-- PROGRAMMING -->
 
           <div class="card skill-group">
 
             <h3>
               Programming
             </h3>
+
 
             <div class="skill-tags">
 
@@ -2362,13 +2559,13 @@
           </div>
 
 
-          <!-- TESTING -->
 
           <div class="card skill-group">
 
             <h3>
               Software Testing
             </h3>
+
 
             <div class="skill-tags">
 
@@ -2417,13 +2614,13 @@
           </div>
 
 
-          <!-- AUTOMATION -->
 
           <div class="card skill-group">
 
             <h3>
               Automation & API
             </h3>
+
 
             <div class="skill-tags">
 
@@ -2456,13 +2653,13 @@
           </div>
 
 
-          <!-- DATABASE -->
 
           <div class="card skill-group">
 
             <h3>
               Database
             </h3>
+
 
             <div class="skill-tags">
 
@@ -2487,13 +2684,13 @@
           </div>
 
 
-          <!-- TOOLS -->
 
           <div class="card skill-group">
 
             <h3>
               Tools & Methodologies
             </h3>
+
 
             <div class="skill-tags">
 
@@ -2541,25 +2738,29 @@
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- =====================================================
          EDUCATION
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="education">
 
-      <div class="container">
+      <div class="section-inner">
+
 
         <div class="section-heading">
 
           <div class="section-label">
-            06 — Education
+            06 — EDUCATION
           </div>
+
 
           <h2>
             Academic background.
           </h2>
 
         </div>
+
 
 
         <div class="education-grid">
@@ -2571,9 +2772,11 @@
               2024 — 2026
             </div>
 
+
             <h3>
               Master of Computer Applications
             </h3>
+
 
             <p>
               PES University
@@ -2590,15 +2793,18 @@
           </div>
 
 
+
           <div class="card education-card">
 
             <div class="education-year">
               2021 — 2024
             </div>
 
+
             <h3>
               Bachelor of Computer Applications
             </h3>
+
 
             <p>
               RNS First Grade College
@@ -2622,33 +2828,41 @@
     </section>
 
 
-    <!-- ===================================================
+
+    <!-- =====================================================
          CONTACT
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="contact">
 
-      <div class="container">
+      <div class="section-inner">
+
 
         <div class="card contact-box">
 
+
           <div class="section-label">
-            07 — Contact
+            07 — CONTACT
           </div>
+
 
           <h2>
             Let's build something great.
           </h2>
 
+
           <p>
+
             I'm open to opportunities in full-stack development,
             software development, MERN stack, QA, and automation.
             If you think my background could be a good fit,
             I'd be happy to connect.
+
           </p>
 
 
           <div class="contact-links">
+
 
             <a
               href="mailto:spurthygowda0810@gmail.com"
@@ -2656,6 +2870,7 @@
             >
               Email Me
             </a>
+
 
             <a
               href="https://github.com/spurthygowda08"
@@ -2666,7 +2881,8 @@
               GitHub
             </a>
 
-            <!-- Add your LinkedIn URL later -->
+
+            <!-- Add LinkedIn URL later -->
 
             <a
               href="#"
@@ -2675,7 +2891,9 @@
               LinkedIn
             </a>
 
+
           </div>
+
 
         </div>
 
@@ -2687,9 +2905,10 @@
   </main>
 
 
-  <!-- =====================================================
+
+  <!-- =======================================================
        FOOTER
-  ====================================================== -->
+  ======================================================== -->
 
   <footer>
 
@@ -2697,12 +2916,17 @@
 
       <div class="footer-inner">
 
+
         <div>
+
           © 2026 Spurthyraj R Gowda.
           Built with HTML, CSS & JavaScript.
+
         </div>
 
+
         <div class="socials">
+
 
           <a
             href="https://github.com/spurthygowda08"
@@ -2712,13 +2936,16 @@
             GitHub
           </a>
 
+
           <a
             href="mailto:spurthygowda0810@gmail.com"
           >
             Email
           </a>
 
+
         </div>
+
 
       </div>
 
@@ -2727,11 +2954,13 @@
   </footer>
 
 
-  <!-- =====================================================
+
+  <!-- =======================================================
        JAVASCRIPT
-  ====================================================== -->
+  ======================================================== -->
 
   <script>
+
 
     /* =====================================================
        MOBILE MENU
@@ -2743,17 +2972,33 @@
     const navLinks =
       document.getElementById("navLinks");
 
+
     menuBtn.addEventListener(
       "click",
       function () {
 
         navLinks.classList.toggle("open");
 
+        const isOpen =
+          navLinks.classList.contains("open");
+
+
+        menuBtn.textContent =
+          isOpen ? "✕" : "☰";
+
+
+        menuBtn.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close menu"
+            : "Open menu"
+        );
+
       }
     );
 
 
-    /* Close menu after clicking */
+    /* Close mobile menu */
 
     document
       .querySelectorAll(".nav-links a")
@@ -2765,10 +3010,18 @@
 
             navLinks.classList.remove("open");
 
+            menuBtn.textContent = "☰";
+
+            menuBtn.setAttribute(
+              "aria-label",
+              "Open menu"
+            );
+
           }
         );
 
       });
+
 
 
     /* =====================================================
@@ -2779,10 +3032,10 @@
       document.getElementById("themeToggle");
 
 
-    /* Load saved theme */
-
     const savedTheme =
-      localStorage.getItem("portfolio-theme");
+      localStorage.getItem(
+        "portfolio-theme"
+      );
 
 
     if (savedTheme === "light") {
@@ -2792,6 +3045,10 @@
       );
 
       themeToggle.textContent = "☀";
+
+    } else {
+
+      themeToggle.textContent = "☾";
 
     }
 
@@ -2835,6 +3092,7 @@
     );
 
   </script>
+
 
 </body>
 </html>
