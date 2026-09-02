@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,9 +22,9 @@
 
   <style>
 
-    /* =====================================================
+    /* =========================================================
        RESET
-    ===================================================== */
+    ========================================================= */
 
     * {
       margin: 0;
@@ -63,13 +64,13 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        VARIABLES
-    ===================================================== */
+    ========================================================= */
 
     :root {
       --bg: #05080d;
-      --bg-soft: #090e16;
+      --bg-soft: #080d15;
       --card: #0c121c;
 
       --text: #f1f5f9;
@@ -82,13 +83,13 @@
 
       --border: rgba(255, 255, 255, 0.08);
 
-      --max-width: 1280px;
+      --max-width: 1420px;
     }
 
 
-    /* =====================================================
+    /* =========================================================
        LIGHT MODE
-    ===================================================== */
+    ========================================================= */
 
     body.light-mode {
       --bg: #f7f9fc;
@@ -102,35 +103,39 @@
     }
 
     body.light-mode header {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.88);
     }
 
-    body.light-mode .hero {
+    body.light-mode #home {
       background:
         radial-gradient(
-          circle at 75% 40%,
+          circle at 50% 45%,
           rgba(99, 179, 255, 0.10),
           transparent 30%
         );
     }
 
-    body.light-mode .photo-frame {
-      background: linear-gradient(
-        145deg,
-        rgba(99, 179, 255, 0.16),
-        rgba(130, 117, 255, 0.12)
-      );
-    }
-
     body.light-mode .photo-placeholder {
       background: #e9eef5;
-      color: #667085;
+    }
+
+    body.light-mode .photo-frame {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(99, 179, 255, 0.20),
+          rgba(130, 117, 255, 0.14)
+        );
+    }
+
+    body.light-mode .hero-status-bar {
+      background: rgba(255, 255, 255, 0.75);
     }
 
 
-    /* =====================================================
+    /* =========================================================
        GLOBAL
-    ===================================================== */
+    ========================================================= */
 
     .container {
       width: min(var(--max-width), 92%);
@@ -142,18 +147,20 @@
     }
 
 
-    /* =====================================================
-       NAVBAR
-    ===================================================== */
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
 
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+
       z-index: 1000;
 
-      background: rgba(5, 8, 13, 0.72);
+      background: rgba(5, 8, 13, 0.70);
+
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
 
@@ -161,7 +168,7 @@
     }
 
     nav {
-      height: 76px;
+      height: 64px;
 
       display: flex;
       align-items: center;
@@ -171,7 +178,7 @@
     .logo {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
 
       letter-spacing: -0.04em;
@@ -184,13 +191,14 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 5px;
+
+      gap: 4px;
 
       list-style: none;
     }
@@ -198,14 +206,14 @@
     .nav-links a {
       display: block;
 
-      padding: 9px 13px;
+      padding: 7px 11px;
 
       color: var(--muted);
 
-      font-size: 0.86rem;
+      font-size: 0.78rem;
       font-weight: 500;
 
-      border-radius: 8px;
+      border-radius: 7px;
 
       transition: 0.25s ease;
     }
@@ -216,8 +224,8 @@
     }
 
     .theme-btn {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
 
       border: 1px solid var(--border);
       border-radius: 50%;
@@ -228,59 +236,57 @@
 
       cursor: pointer;
 
-      font-size: 0.95rem;
-
       transition: 0.25s ease;
     }
 
     .theme-btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(99, 179, 255, 0.35);
+      border-color: rgba(99, 179, 255, 0.4);
     }
 
     .menu-btn {
       display: none;
 
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
 
       border: 1px solid var(--border);
-      border-radius: 9px;
+      border-radius: 8px;
 
       background: transparent;
       color: var(--text);
 
       cursor: pointer;
-
-      font-size: 1.2rem;
     }
 
 
-    /* =====================================================
+    /* =========================================================
        HERO
-    ===================================================== */
+       THIS IS THE MAIN CHANGE
+    ========================================================= */
 
     #home {
       min-height: 100vh;
 
-      display: flex;
-      align-items: center;
+      padding-top: 64px;
 
-      padding-top: 76px;
+      display: flex;
+      flex-direction: column;
 
       overflow: hidden;
 
       background:
         radial-gradient(
-          circle at 50% 45%,
-          rgba(99, 179, 255, 0.075),
-          transparent 28%
+          circle at 50% 48%,
+          rgba(99, 179, 255, 0.08),
+          transparent 26%
         ),
         radial-gradient(
           circle at 85% 20%,
-          rgba(130, 117, 255, 0.08),
+          rgba(130, 117, 255, 0.09),
           transparent 25%
-        );
+        ),
+        #05080d;
     }
 
     #home::before {
@@ -288,100 +294,114 @@
 
       position: absolute;
 
-      width: 500px;
-      height: 500px;
+      width: 600px;
+      height: 600px;
 
-      top: 15%;
-      left: 35%;
+      left: 50%;
+      top: 42%;
+
+      transform: translate(-50%, -50%);
 
       border-radius: 50%;
 
-      background: rgba(99, 179, 255, 0.055);
+      background: rgba(99, 179, 255, 0.045);
 
-      filter: blur(100px);
+      filter: blur(110px);
 
       pointer-events: none;
     }
 
-    #home::after {
-      content: "";
 
-      position: absolute;
-
-      width: 450px;
-      height: 450px;
-
-      right: -150px;
-      bottom: -150px;
-
-      border-radius: 50%;
-
-      background: rgba(130, 117, 255, 0.06);
-
-      filter: blur(100px);
-
-      pointer-events: none;
-    }
+    /* =========================================================
+       HERO MAIN AREA
+    ========================================================= */
 
     .hero {
-      min-height: calc(100vh - 76px);
-
       position: relative;
+      z-index: 2;
+
+      width: min(var(--max-width), 92%);
+
+      margin: 0 auto;
+
+      min-height: calc(100vh - 145px);
 
       display: grid;
 
-      grid-template-columns: 0.85fr 1.3fr 0.85fr;
+      grid-template-columns:
+        minmax(280px, 0.9fr)
+        minmax(300px, 0.85fr)
+        minmax(400px, 1.35fr);
 
       align-items: center;
 
-      gap: 35px;
+      gap: 20px;
 
-      padding: 70px 0;
+      padding: 45px 0 25px;
     }
 
 
-    /* =====================================================
-       HERO LEFT
-    ===================================================== */
+    /* =========================================================
+       LEFT SIDE
+    ========================================================= */
 
     .hero-left {
       position: relative;
-      z-index: 3;
+      z-index: 5;
     }
 
-    .hero-small-title {
-      color: var(--primary);
+    .hero-intro {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 20px;
+
+      color: var(--muted);
 
       font-size: 0.72rem;
-      font-weight: 700;
 
-      letter-spacing: 0.20em;
+      font-weight: 600;
+
+      letter-spacing: 0.22em;
 
       text-transform: uppercase;
-
-      margin-bottom: 22px;
     }
 
-    .hero-left h1 {
+    .hero-intro-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    .hero-name {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(3.8rem, 6vw, 6.7rem);
+      font-size: clamp(4rem, 6.2vw, 7.3rem);
 
-      line-height: 0.88;
+      line-height: 0.82;
 
       letter-spacing: -0.075em;
 
       font-weight: 700;
+
+      text-transform: uppercase;
     }
 
-    .hero-left h1 span {
+    .hero-name span {
       display: block;
 
-      background: linear-gradient(
-        110deg,
-        #62b5ff,
-        #8275ff
-      );
+      background:
+        linear-gradient(
+          110deg,
+          #62b5ff,
+          #8275ff
+        );
 
       -webkit-background-clip: text;
       background-clip: text;
@@ -389,137 +409,88 @@
       color: transparent;
     }
 
-    .hero-role {
+    .hero-left-description {
       margin-top: 30px;
 
-      font-size: 1rem;
-      font-weight: 600;
-
-      color: var(--text);
-
-      max-width: 340px;
-    }
-
-    .hero-description {
-      margin-top: 18px;
+      max-width: 390px;
 
       color: var(--muted);
 
-      font-size: 0.88rem;
+      font-size: 0.82rem;
 
-      max-width: 360px;
+      line-height: 1.75;
     }
 
-    .hero-buttons {
+    .hero-left-buttons {
       display: flex;
 
       flex-wrap: wrap;
 
-      gap: 10px;
+      gap: 9px;
 
-      margin-top: 27px;
+      margin-top: 25px;
     }
 
 
-    /* =====================================================
-       BUTTONS
-    ===================================================== */
-
-    .btn {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 11px 17px;
-
-      border-radius: 9px;
-
-      font-size: 0.82rem;
-      font-weight: 600;
-
-      border: 1px solid var(--border);
-
-      transition: 0.25s ease;
-    }
-
-    .btn-primary {
-      color: #07101a;
-
-      border: none;
-
-      background: linear-gradient(
-        135deg,
-        #63b3ff,
-        #8275ff
-      );
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-
-    /* =====================================================
-       HERO PHOTO
-    ===================================================== */
+    /* =========================================================
+       CENTER PHOTO
+    ========================================================= */
 
     .hero-center {
       position: relative;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      height: 620px;
 
-      min-height: 650px;
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
     }
 
     .photo-glow {
       position: absolute;
 
-      width: 430px;
-      height: 430px;
+      width: 440px;
+      height: 440px;
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(99, 179, 255, 0.18),
+          rgba(99, 179, 255, 0.20),
           rgba(130, 117, 255, 0.08),
           transparent 68%
         );
 
-      filter: blur(18px);
+      filter: blur(20px);
     }
 
     .photo-frame {
       position: relative;
-      z-index: 2;
+      z-index: 3;
 
-      width: min(380px, 80%);
+      width: min(365px, 90%);
 
-      padding: 11px;
+      padding: 10px;
 
-      border-radius: 34px;
+      border-radius: 38px;
 
-      background: linear-gradient(
-        145deg,
-        rgba(99, 179, 255, 0.22),
-        rgba(130, 117, 255, 0.16)
-      );
+      background:
+        linear-gradient(
+          145deg,
+          rgba(99, 179, 255, 0.25),
+          rgba(130, 117, 255, 0.17)
+        );
 
-      border: 1px solid rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.12);
 
-      transform: rotate(2deg);
+      transform: rotate(-2deg);
 
       box-shadow:
-        0 35px 100px rgba(0, 0, 0, 0.45),
-        0 0 70px rgba(99, 179, 255, 0.07);
+        0 40px 100px rgba(0, 0, 0, 0.55),
+        0 0 80px rgba(99, 179, 255, 0.08);
 
       transition: 0.5s ease;
     }
@@ -534,143 +505,289 @@
       aspect-ratio: 3 / 4;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       text-align: center;
 
-      border-radius: 25px;
+      border-radius: 30px;
+
+      overflow: hidden;
 
       background:
         radial-gradient(
           circle at 50% 25%,
-          rgba(99, 179, 255, 0.12),
+          rgba(99, 179, 255, 0.15),
           transparent 35%
         ),
         #0b111c;
 
-      color: var(--muted);
-
       border: 1px solid rgba(255, 255, 255, 0.06);
 
-      overflow: hidden;
+      color: var(--muted);
     }
 
     .photo-placeholder-content {
-      padding: 30px;
+      padding: 25px;
     }
 
     .photo-icon {
-      width: 65px;
-      height: 65px;
+      width: 58px;
+      height: 58px;
 
-      margin: 0 auto 20px;
-
-      border-radius: 50%;
+      margin: 0 auto 18px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
+      border-radius: 50%;
+
       background: rgba(99, 179, 255, 0.08);
 
-      border: 1px solid rgba(99, 179, 255, 0.15);
+      border: 1px solid rgba(99, 179, 255, 0.18);
 
-      font-size: 1.4rem;
+      font-size: 1.25rem;
     }
 
     .photo-placeholder strong {
       display: block;
 
+      margin-bottom: 6px;
+
       color: var(--text);
 
-      font-size: 1rem;
-
-      margin-bottom: 7px;
+      font-size: 0.95rem;
     }
 
     .photo-placeholder p {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
 
       line-height: 1.6;
     }
 
     .photo-caption {
-      padding: 13px 5px 5px;
+      padding: 12px 5px 4px;
 
       text-align: center;
 
       color: var(--muted);
 
-      font-size: 0.68rem;
+      font-size: 0.62rem;
 
-      letter-spacing: 0.04em;
+      letter-spacing: 0.12em;
     }
 
 
-    /* =====================================================
-       HERO RIGHT
-    ===================================================== */
+    /* =========================================================
+       RIGHT SIDE
+    ========================================================= */
 
     .hero-right {
       position: relative;
-      z-index: 3;
 
-      align-self: center;
+      z-index: 5;
 
-      padding-top: 30px;
+      padding-left: 10px;
     }
 
-    .side-label {
-      color: var(--primary);
+    .right-small-title {
+      color: var(--muted);
 
       font-size: 0.68rem;
 
-      letter-spacing: 0.18em;
+      font-weight: 700;
+
+      letter-spacing: 0.20em;
 
       text-transform: uppercase;
-
-      margin-bottom: 15px;
-
-      font-weight: 700;
-    }
-
-    .hero-right h2 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: clamp(1.8rem, 3vw, 3rem);
-
-      line-height: 0.98;
-
-      letter-spacing: -0.055em;
 
       margin-bottom: 18px;
     }
 
-    .hero-right h2 span {
-      color: var(--muted);
+    .hero-title {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: clamp(4rem, 6vw, 7rem);
+
+      line-height: 0.82;
+
+      letter-spacing: -0.075em;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
     }
 
-    .hero-right p {
-      color: var(--muted);
-
-      font-size: 0.84rem;
-
-      max-width: 330px;
+    .hero-title .white {
+      color: var(--text);
     }
 
-    .availability {
+    .hero-title .gradient {
+      display: block;
+
+      background:
+        linear-gradient(
+          110deg,
+          #62b5ff,
+          #8275ff
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin-top: 25px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: clamp(1.2rem, 1.8vw, 2rem);
+
+      line-height: 1;
+
+      letter-spacing: -0.035em;
+
+      color: var(--muted);
+
+      text-transform: uppercase;
+    }
+
+    .hero-tech {
+      margin-top: 23px;
+
+      color: var(--primary);
+
+      font-size: 0.72rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.16em;
+
+      text-transform: uppercase;
+    }
+
+    .hero-right-description {
+      max-width: 400px;
+
+      margin-top: 17px;
+
+      color: var(--muted);
+
+      font-size: 0.82rem;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px 16px;
+
+      border-radius: 9px;
+
+      font-size: 0.78rem;
+
+      font-weight: 600;
+
+      border: 1px solid var(--border);
+
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      color: #07101a;
+
+      border: none;
+
+      background:
+        linear-gradient(
+          135deg,
+          #63b3ff,
+          #8275ff
+        );
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================================================
+       HERO BOTTOM STATUS BAR
+    ========================================================= */
+
+    .hero-status-bar {
+      position: relative;
+      z-index: 10;
+
+      width: 100%;
+
+      min-height: 82px;
+
+      border-top: 1px solid var(--border);
+
+      background: rgba(8, 13, 22, 0.55);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 15px max(4%, calc((100vw - var(--max-width)) / 2));
+    }
+
+    .status-left {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 4px;
+    }
+
+    .status-label {
+      color: var(--muted);
+
+      font-size: 0.58rem;
+
+      font-weight: 700;
+
+      letter-spacing: 0.20em;
+
+      text-transform: uppercase;
+    }
+
+    .status-value {
       display: flex;
 
       align-items: center;
 
       gap: 9px;
 
-      margin-top: 25px;
+      font-size: 0.82rem;
 
-      color: var(--muted);
+      font-weight: 600;
+    }
 
-      font-size: 0.76rem;
+    .status-value strong {
+      color: var(--primary);
     }
 
     .status-dot {
@@ -681,91 +798,125 @@
 
       background: var(--green);
 
-      box-shadow: 0 0 13px var(--green);
+      box-shadow: 0 0 12px var(--green);
     }
 
+    .talk-area {
+      display: flex;
 
-    /* =====================================================
-       FLOATING DETAILS
-    ===================================================== */
+      align-items: center;
 
-    .floating-tag {
-      position: absolute;
+      gap: 17px;
+    }
 
-      z-index: 4;
+    .talk-text {
+      text-align: right;
+    }
 
-      padding: 9px 13px;
-
-      border-radius: 8px;
-
-      background: rgba(8, 13, 22, 0.72);
-
-      border: 1px solid rgba(255, 255, 255, 0.08);
-
-      backdrop-filter: blur(12px);
-
+    .talk-label {
       color: var(--muted);
 
-      font-size: 0.65rem;
+      font-size: 0.58rem;
 
-      letter-spacing: 0.05em;
+      font-weight: 700;
+
+      letter-spacing: 0.20em;
+
+      text-transform: uppercase;
     }
 
-    .floating-one {
-      left: 5%;
-      bottom: 22%;
+    .talk-title {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 1.8rem;
+
+      font-weight: 700;
+
+      line-height: 0.9;
+
+      letter-spacing: -0.055em;
     }
 
-    .floating-two {
-      right: 2%;
-      top: 20%;
+    .talk-button {
+      width: 52px;
+      height: 52px;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      color: #07101a;
+
+      background:
+        linear-gradient(
+          135deg,
+          #63b3ff,
+          #8275ff
+        );
+
+      font-size: 1.3rem;
+
+      box-shadow:
+        0 0 30px rgba(99, 179, 255, 0.18);
+
+      transition: 0.25s ease;
+    }
+
+    .talk-button:hover {
+      transform: translateY(-4px) rotate(5deg);
     }
 
 
-    /* =====================================================
+    /* =========================================================
        SCROLL INDICATOR
-    ===================================================== */
+    ========================================================= */
 
     .scroll-indicator {
       position: absolute;
 
-      left: 50%;
-      bottom: 25px;
-
-      transform: translateX(-50%);
+      right: 25px;
+      bottom: 105px;
 
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
 
       gap: 8px;
 
       color: var(--muted);
 
-      font-size: 0.62rem;
+      font-size: 0.55rem;
 
-      letter-spacing: 0.18em;
+      letter-spacing: 0.15em;
 
       text-transform: uppercase;
 
-      opacity: 0.7;
+      writing-mode: vertical-rl;
+
+      opacity: 0.65;
     }
 
     .scroll-line {
       width: 1px;
-      height: 35px;
+      height: 45px;
 
-      background: linear-gradient(
-        to bottom,
-        var(--primary),
-        transparent
-      );
+      background:
+        linear-gradient(
+          to bottom,
+          var(--primary),
+          transparent
+        );
     }
 
 
-    /* =====================================================
+    /* =========================================================
        GENERAL SECTIONS
-    ===================================================== */
+    ========================================================= */
 
     section:not(#home) {
       padding: 110px 0;
@@ -810,9 +961,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        CARDS
-    ===================================================== */
+    ========================================================= */
 
     .card {
       background:
@@ -856,9 +1007,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        ABOUT
-    ===================================================== */
+    ========================================================= */
 
     .about-grid {
       display: grid;
@@ -892,14 +1043,16 @@
 
     body.light-mode .about-point {
       color: #475467;
+
       background: #f8fafc;
+
       border-color: #eaecf0;
     }
 
 
-    /* =====================================================
+    /* =========================================================
        EXPERIENCE
-    ===================================================== */
+    ========================================================= */
 
     .timeline {
       position: relative;
@@ -934,11 +1087,12 @@
 
       border-radius: 50%;
 
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
 
       box-shadow:
         0 0 0 5px rgba(99, 179, 255, 0.10);
@@ -971,9 +1125,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        PROJECTS
-    ===================================================== */
+    ========================================================= */
 
     .projects-grid {
       display: grid;
@@ -1054,9 +1208,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        SKILLS
-    ===================================================== */
+    ========================================================= */
 
     .skills-grid {
       display: grid;
@@ -1098,6 +1252,7 @@
 
     body.light-mode .skill {
       color: #475467;
+
       background: #f8fafc;
     }
 
@@ -1110,9 +1265,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        EDUCATION
-    ===================================================== */
+    ========================================================= */
 
     .education-grid {
       display: grid;
@@ -1141,9 +1296,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        CONTACT
-    ===================================================== */
+    ========================================================= */
 
     .contact-box {
       text-align: center;
@@ -1177,6 +1332,7 @@
 
     .contact-box > * {
       position: relative;
+
       z-index: 2;
     }
 
@@ -1213,9 +1369,9 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        FOOTER
-    ===================================================== */
+    ========================================================= */
 
     footer {
       border-top: 1px solid var(--border);
@@ -1248,31 +1404,37 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        ANIMATIONS
-    ===================================================== */
+    ========================================================= */
 
     @keyframes fadeUp {
+
       from {
         opacity: 0;
+
         transform: translateY(25px);
       }
 
       to {
         opacity: 1;
+
         transform: translateY(0);
       }
+
     }
 
     @keyframes floatPhoto {
+
       0%,
       100% {
-        transform: rotate(2deg) translateY(0);
+        transform: rotate(-2deg) translateY(0);
       }
 
       50% {
-        transform: rotate(2deg) translateY(-10px);
+        transform: rotate(-2deg) translateY(-10px);
       }
+
     }
 
     .fade-up {
@@ -1300,50 +1462,53 @@
     }
 
 
-    /* =====================================================
-       MOBILE
-    ===================================================== */
+    /* =========================================================
+       TABLET
+    ========================================================= */
 
-    @media (max-width: 1050px) {
+    @media (max-width: 1150px) {
 
       .hero {
-        grid-template-columns: 0.9fr 1.1fr;
+        grid-template-columns:
+          0.85fr
+          0.8fr
+          1.1fr;
+
+        gap: 10px;
       }
 
-      .hero-right {
-        display: none;
+      .hero-name {
+        font-size: clamp(3.6rem, 6vw, 5.5rem);
       }
 
-      .hero-left h1 {
-        font-size: clamp(4rem, 8vw, 6rem);
+      .hero-title {
+        font-size: clamp(3.4rem, 5.5vw, 5.8rem);
       }
 
-      .hero-center {
-        min-height: 600px;
+      .hero-subtitle {
+        font-size: 1.2rem;
       }
+
+      .photo-frame {
+        width: min(320px, 95%);
+      }
+
     }
 
 
-    @media (max-width: 800px) {
+    /* =========================================================
+       MOBILE NAV
+    ========================================================= */
 
-      header {
-        background: rgba(5, 8, 13, 0.92);
-      }
-
-      nav {
-        height: 68px;
-      }
-
-      .nav-right {
-        gap: 10px;
-      }
+    @media (max-width: 900px) {
 
       .nav-links {
         display: none;
 
         position: absolute;
 
-        top: 68px;
+        top: 64px;
+
         left: 0;
 
         width: 100%;
@@ -1373,62 +1538,83 @@
         display: block;
       }
 
+
+      /* MOBILE HERO */
+
+      #home {
+        min-height: auto;
+
+        padding-top: 64px;
+      }
+
       .hero {
         min-height: auto;
 
         grid-template-columns: 1fr;
 
-        gap: 45px;
+        gap: 40px;
 
-        padding: 80px 0 90px;
+        padding: 70px 0 50px;
 
         text-align: center;
-      }
-
-      .hero-center {
-        order: -1;
-
-        min-height: auto;
       }
 
       .hero-left {
         order: 2;
       }
 
-      .hero-left h1 {
-        font-size: clamp(3.5rem, 16vw, 6rem);
+      .hero-center {
+        order: 1;
+
+        height: auto;
+
+        min-height: 470px;
       }
 
-      .hero-role,
-      .hero-description {
+      .hero-right {
+        order: 3;
+
+        padding-left: 0;
+      }
+
+      .hero-intro {
+        justify-content: center;
+      }
+
+      .hero-name {
+        font-size: clamp(4rem, 16vw, 6.5rem);
+      }
+
+      .hero-left-description {
         margin-left: auto;
         margin-right: auto;
       }
 
-      .hero-buttons {
+      .hero-left-buttons {
         justify-content: center;
       }
 
-      .availability {
-        justify-content: center;
+      .hero-title {
+        font-size: clamp(3.7rem, 15vw, 6.5rem);
       }
 
-      .photo-frame {
-        width: min(330px, 78%);
+      .hero-right-description {
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .floating-one {
-        left: 3%;
-        bottom: 12%;
-      }
-
-      .floating-two {
-        right: 3%;
-        top: 8%;
+      .hero-tech {
+        margin-bottom: 0;
       }
 
       .scroll-indicator {
         display: none;
+      }
+
+      .hero-status-bar {
+        padding: 18px 5%;
+
+        gap: 20px;
       }
 
       .about-grid,
@@ -1447,45 +1633,80 @@
 
         text-align: center;
       }
+
     }
 
 
-    @media (max-width: 500px) {
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 520px) {
 
       .container {
         width: 90%;
       }
 
+      nav {
+        height: 60px;
+      }
+
+      .nav-links {
+        top: 60px;
+      }
+
       .hero {
-        padding-top: 65px;
+        padding-top: 55px;
       }
 
-      .hero-left h1 {
-        font-size: 3.5rem;
-      }
-
-      .hero-role {
-        font-size: 0.95rem;
-      }
-
-      .hero-description {
-        font-size: 0.82rem;
-      }
-
-      .hero-buttons {
-        width: 100%;
-      }
-
-      .btn {
-        width: 100%;
+      .hero-center {
+        min-height: 390px;
       }
 
       .photo-frame {
-        width: 75%;
+        width: 76%;
       }
 
-      .floating-tag {
-        display: none;
+      .hero-name {
+        font-size: 3.8rem;
+      }
+
+      .hero-title {
+        font-size: 3.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.05rem;
+      }
+
+      .hero-left-buttons {
+        flex-direction: column;
+
+        width: 100%;
+      }
+
+      .hero-left-buttons .btn {
+        width: 100%;
+      }
+
+      .hero-status-bar {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .talk-area {
+        width: 100%;
+
+        justify-content: space-between;
+      }
+
+      .talk-text {
+        text-align: left;
+      }
+
+      .card {
+        padding: 23px;
       }
 
       .contact-links {
@@ -1495,6 +1716,7 @@
       .contact-links .btn {
         width: 100%;
       }
+
     }
 
   </style>
@@ -1504,9 +1726,9 @@
 <body>
 
 
-  <!-- =====================================================
+  <!-- =======================================================
        NAVIGATION
-  ====================================================== -->
+  ======================================================== -->
 
   <header>
 
@@ -1517,7 +1739,6 @@
         <a href="#home" class="logo">
           SPURTHY<span>.</span>
         </a>
-
 
         <div class="nav-right">
 
@@ -1582,168 +1803,231 @@
 
 
 
-  <!-- =====================================================
+  <!-- =======================================================
        MAIN
-  ====================================================== -->
+  ======================================================== -->
 
   <main>
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          HERO
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="home">
 
-      <div class="container">
 
-        <div class="hero">
+      <div class="hero">
 
 
-          <!-- LEFT SIDE -->
+        <!-- =================================================
+             LEFT
+        ================================================== -->
 
-          <div class="hero-left fade-up">
+        <div class="hero-left fade-up">
 
-            <div class="hero-small-title">
-              MCA Graduate • Software Development • QA
-            </div>
+          <div class="hero-intro">
 
-            <h1>
-              Hi, I'm
-              <span>Spurthyraj.</span>
-            </h1>
+            <span class="hero-intro-dot"></span>
 
-            <div class="hero-role">
-              Software Developer | MERN Stack | QA & Automation
-            </div>
-
-            <p class="hero-description">
-              MCA graduate with a strong interest in software development,
-              web technologies, and quality engineering. I enjoy building
-              practical web applications, solving problems, and ensuring
-              reliable user experiences through testing and debugging.
-            </p>
-
-            <div class="hero-buttons">
-
-              <a
-                href="#"
-                class="btn btn-primary"
-              >
-                View Resume
-              </a>
-
-              <a
-                href="https://github.com/spurthygowda08"
-                target="_blank"
-                class="btn btn-secondary"
-              >
-                GitHub
-              </a>
-
-              <a
-                href="#"
-                class="btn btn-secondary"
-              >
-                LinkedIn
-              </a>
-
-              <a
-                href="mailto:spurthygowda0810@gmail.com"
-                class="btn btn-secondary"
-              >
-                Contact
-              </a>
-
-            </div>
+            HI, MY NAME IS
 
           </div>
 
 
+          <h1 class="hero-name">
 
-          <!-- CENTER PHOTO -->
+            SPURTHY
 
-          <div class="hero-center fade-up delay-2">
+            <span>
+              RAJ R GOWDA
+            </span>
 
-            <div class="photo-glow"></div>
+          </h1>
 
 
-            <div class="photo-frame">
+          <p class="hero-left-description">
 
-              <div class="photo-placeholder">
+            MCA graduate passionate about building practical
+            software applications, solving problems, and creating
+            reliable digital experiences through development and testing.
 
-                <div class="photo-placeholder-content">
+          </p>
 
-                  <div class="photo-icon">
-                    ✦
-                  </div>
 
-                  <strong>
-                    Your Photo
-                  </strong>
+          <div class="hero-left-buttons">
 
-                  <p>
-                    Professional photo<br />
-                    will be added here later.
-                  </p>
+            <a
+              href="#projects"
+              class="btn btn-primary"
+            >
+              View Projects
+            </a>
 
+            <a
+              href="#contact"
+              class="btn btn-secondary"
+            >
+              Let's Talk
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CENTER PHOTO
+        ================================================== -->
+
+        <div class="hero-center fade-up delay-2">
+
+          <div class="photo-glow"></div>
+
+
+          <div class="photo-frame">
+
+            <div class="photo-placeholder">
+
+              <div class="photo-placeholder-content">
+
+                <div class="photo-icon">
+                  ✦
                 </div>
 
-              </div>
+                <strong>
+                  Your Photo
+                </strong>
 
-              <div class="photo-caption">
-                SOFTWARE DEVELOPER • MCA GRADUATE
+                <p>
+                  Professional photo<br />
+                  will be added here later.
+                </p>
+
               </div>
 
             </div>
 
 
-            <div class="floating-tag floating-one">
-              OPEN TO OPPORTUNITIES
+            <div class="photo-caption">
+              SOFTWARE DEVELOPER • MCA GRADUATE
             </div>
 
-            <div class="floating-tag floating-two">
-              SOFTWARE • QA • WEB
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT
+        ================================================== -->
+
+        <div class="hero-right fade-up delay-3">
+
+          <div class="right-small-title">
+            01 — SOFTWARE DEVELOPMENT
+          </div>
+
+
+          <h2 class="hero-title">
+
+            <span class="white">
+              SOFTWARE
+            </span>
+
+            <span class="gradient">
+              ENGINEER
+            </span>
+
+          </h2>
+
+
+          <div class="hero-subtitle">
+            & MERN STACK DEVELOPER
+          </div>
+
+
+          <div class="hero-tech">
+            WEB • QA • AUTOMATION
+          </div>
+
+
+          <p class="hero-right-description">
+
+            Building clean, functional and reliable web applications
+            with a focus on user experience, development quality,
+            testing, and continuous learning.
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- =====================================================
+           BOTTOM STATUS
+      ====================================================== -->
+
+      <div class="hero-status-bar">
+
+
+        <div class="status-left">
+
+          <div class="status-label">
+            CURRENT STATUS
+          </div>
+
+          <div class="status-value">
+
+            <span class="status-dot"></span>
+
+            Available for
+
+            <strong>
+              Opportunities
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="talk-area">
+
+          <div class="talk-text">
+
+            <div class="talk-label">
+              GET IN TOUCH
+            </div>
+
+            <div class="talk-title">
+              LET'S TALK
             </div>
 
           </div>
 
 
-
-          <!-- RIGHT SIDE -->
-
-          <div class="hero-right fade-up delay-3">
-
-            <div class="side-label">
-              01 — Software Development
-            </div>
-
-            <h2>
-              Building useful
-              <span>digital experiences.</span>
-            </h2>
-
-            <p>
-              Interested in creating clean web applications,
-              solving real-world problems, and developing reliable
-              software with a quality-first mindset.
-            </p>
-
-            <div class="availability">
-
-              <span class="status-dot"></span>
-
-              Open to software development and QA opportunities
-
-            </div>
-
-          </div>
-
+          <a
+            href="#contact"
+            class="talk-button"
+            aria-label="Go to contact"
+          >
+            ↗
+          </a>
 
         </div>
 
       </div>
 
+
+
+      <!-- SCROLL -->
 
       <div class="scroll-indicator">
 
@@ -1753,13 +2037,14 @@
 
       </div>
 
+
     </section>
 
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          ABOUT
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="about">
 
@@ -1863,9 +2148,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          EXPERIENCE
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="experience">
 
@@ -1889,6 +2174,7 @@
 
 
         <div class="timeline">
+
 
           <div class="timeline-item">
 
@@ -1923,6 +2209,7 @@
 
           </div>
 
+
         </div>
 
       </div>
@@ -1931,9 +2218,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          PROJECTS
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="projects">
 
@@ -2081,9 +2368,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          SKILLS
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="skills">
 
@@ -2132,7 +2419,6 @@
           </div>
 
 
-
           <div class="card skill-group">
 
             <h3>
@@ -2151,7 +2437,6 @@
             </div>
 
           </div>
-
 
 
           <div class="card skill-group">
@@ -2176,7 +2461,6 @@
             </div>
 
           </div>
-
 
 
           <div class="card skill-group">
@@ -2216,7 +2500,6 @@
           </div>
 
 
-
           <div class="card skill-group">
 
             <h3>
@@ -2244,7 +2527,6 @@
             </div>
 
           </div>
-
 
 
           <div class="card skill-group">
@@ -2277,9 +2559,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          EDUCATION
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="education">
 
@@ -2326,7 +2608,6 @@
           </div>
 
 
-
           <div class="card education-card">
 
             <div class="education-year">
@@ -2360,9 +2641,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          CONTACT
-    ==================================================== -->
+    ====================================================== -->
 
     <section id="contact">
 
@@ -2423,9 +2704,9 @@
 
 
 
-  <!-- =====================================================
+  <!-- =======================================================
        FOOTER
-  ====================================================== -->
+  ======================================================== -->
 
   <footer>
 
@@ -2437,6 +2718,7 @@
           © 2026 Spurthyraj R Gowda.
           Built with HTML, CSS & JavaScript.
         </div>
+
 
         <div class="socials">
 
@@ -2463,15 +2745,16 @@
 
 
 
-  <!-- =====================================================
+  <!-- =======================================================
        JAVASCRIPT
-  ====================================================== -->
+  ======================================================== -->
 
   <script>
 
-    /* =========================
+
+    /* =======================================================
        MOBILE MENU
-    ========================== */
+    ======================================================== */
 
     const menuBtn =
       document.getElementById("menuBtn");
@@ -2480,30 +2763,36 @@
       document.getElementById("navLinks");
 
 
-    menuBtn.addEventListener("click", function () {
+    menuBtn.addEventListener(
+      "click",
+      function () {
 
-      navLinks.classList.toggle("open");
+        navLinks.classList.toggle("open");
 
-    });
+      }
+    );
 
 
     document
       .querySelectorAll(".nav-links a")
       .forEach(function (link) {
 
-        link.addEventListener("click", function () {
+        link.addEventListener(
+          "click",
+          function () {
 
-          navLinks.classList.remove("open");
+            navLinks.classList.remove("open");
 
-        });
+          }
+        );
 
       });
 
 
 
-    /* =========================
-       DARK / LIGHT THEME
-    ========================== */
+    /* =======================================================
+       DARK / LIGHT MODE
+    ======================================================== */
 
     const themeBtn =
       document.getElementById("themeBtn");
@@ -2522,38 +2811,48 @@
     }
 
 
-    themeBtn.addEventListener("click", function () {
+    themeBtn.addEventListener(
+      "click",
+      function () {
 
-      document.body.classList.toggle("light-mode");
-
-
-      if (
-        document.body.classList.contains("light-mode")
-      ) {
-
-        themeBtn.textContent = "☀";
-
-        localStorage.setItem(
-          "portfolio-theme",
-          "light"
+        document.body.classList.toggle(
+          "light-mode"
         );
 
-      } else {
 
-        themeBtn.textContent = "☾";
+        if (
+          document.body.classList.contains(
+            "light-mode"
+          )
+        ) {
 
-        localStorage.setItem(
-          "portfolio-theme",
-          "dark"
-        );
+          themeBtn.textContent = "☀";
+
+          localStorage.setItem(
+            "portfolio-theme",
+            "light"
+          );
+
+        }
+
+        else {
+
+          themeBtn.textContent = "☾";
+
+          localStorage.setItem(
+            "portfolio-theme",
+            "dark"
+          );
+
+        }
 
       }
-
-    });
+    );
 
 
   </script>
 
 
 </body>
+
 </html>
