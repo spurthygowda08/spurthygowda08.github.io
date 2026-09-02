@@ -1600,7 +1600,131 @@
                     height: 44px;
                 }
             }
+        /* ═══════════════════════════════ CONTACT IMPROVEMENTS ═══════════════════════════════ */
 
+.contact-note {
+    color: var(--muted);
+    font-size: .88rem;
+    line-height: 1.6;
+    margin-top: 1.25rem;
+    max-width: 600px;
+}
+
+
+/* RIGHT CONTACT CARD */
+
+.contact-social-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-social-card h3 {
+    margin-bottom: .35rem;
+}
+
+.contact-social-sub {
+    color: var(--muted);
+    font-size: .92rem;
+    margin: 0 0 1.25rem;
+}
+
+
+/* SOCIAL LINKS */
+
+.contact-social-list {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.contact-social-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 1.1rem;
+
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.025);
+
+    text-decoration: none;
+    color: var(--text);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.contact-social-item:hover {
+    transform: translateX(5px);
+    border-color: rgba(100,181,246,.45);
+    background: rgba(100,181,246,.06);
+}
+
+.contact-social-item div {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.contact-social-item strong {
+    color: var(--brand);
+    font-size: 1rem;
+}
+
+.contact-social-item span {
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.contact-social-item .social-arrow {
+    color: var(--brand);
+    font-size: 1.15rem;
+    transition: transform .25s ease;
+}
+
+.contact-social-item:hover .social-arrow {
+    transform: translate(3px, -3px);
+}
+
+
+/* ═══════════════════════════════ FOOTER ═══════════════════════════════ */
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-tagline {
+    color: var(--muted);
+    font-size: .8rem;
+}
+
+
+/* ═══════════════════════════════ MOBILE ═══════════════════════════════ */
+
+@media (max-width: 768px) {
+
+    .contact-social-card {
+        margin-top: 0;
+    }
+
+    .contact-social-item {
+        padding: .9rem 1rem;
+    }
+
+    .footer-left {
+        gap: .4rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
         </style>
     </head>
     <body>
@@ -2992,50 +3116,193 @@
             </div>
         </section>
         <!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-title fade">Contact</h2>
-                <p class="section-sub fade d1">Have an opportunity or idea? Let's talk.</p>
-                <div class="contact-grid fade d2">
-                    <div class="glass-card card">
-                        <form id="contactForm" novalidate>
-                            <div class="form-row">
-                                <input class="form-input" name="name" placeholder="Your name" required/>
-                                <input class="form-input" name="email" type="email" placeholder="Email" required/>
-                            </div>
-                            <input class="form-input" name="subject" placeholder="Subject"/>
-                            <textarea class="form-input" name="message" placeholder="Message" required></textarea>
-                            <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-                                <button class="btn-primary" type="submit">Send Message</button>
-                                <a class="btn-ghost" href="https://drive.google.com/file/d/1TC-TVh72ernmK8yF68JzU0ZqEIJXsclt/view?usp=sharing" target="_blank">Download Resume</a>
-                            </div>
-                            <p id="formStatus" style="color:var(--muted);font-size:.9rem;margin-top:.5rem;"></p>
-                        </form>
+<section id="contact">
+    <div class="container">
+
+        <h2 class="section-title fade">Contact</h2>
+
+        <p class="section-sub fade d1">
+            Have an opportunity or idea? Let's talk.
+        </p>
+
+        <div class="contact-grid fade d2">
+
+            <!-- CONTACT FORM -->
+            <div class="glass-card card">
+                <form id="contactForm" novalidate>
+
+                    <div class="form-row">
+                        <input
+                            class="form-input"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                        />
+
+                        <input
+                            class="form-input"
+                            name="email"
+                            type="email"
+                            placeholder="Email"
+                            required
+                        />
                     </div>
-                    <div class="glass-card card">
-                        <h3>Elsewhere</h3>
-                        <div class="social-links" style="margin-top:.75rem;">
-                            <a class="btn-ghost" href="https://github.com/spurthygowda08" target="_blank">GitHub</a>
-                            <a class="btn-ghost" href="https://linkedin.com/in/spurthygowda0810" target="_blank">LinkedIn</a>
-                            <a class="btn-ghost" href="https://www.instagram.com/_spurthy_gowda/" target="_blank">Instagram</a>
-            
-                            <a class="btn-ghost" href="mailto:spurthygowda0810@gmail.com">Email</a>
+
+                    <input
+                        class="form-input"
+                        name="subject"
+                        placeholder="Subject"
+                    />
+
+                    <textarea
+                        class="form-input"
+                        name="message"
+                        placeholder="Message"
+                        required
+                    ></textarea>
+
+                    <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+                        <button
+                            class="btn-primary"
+                            type="submit"
+                        >
+                            Send Message
+                        </button>
+
+                        <a
+                            class="btn-ghost"
+                            href="https://drive.google.com/file/d/1TC-TVh72ernmK8yF68JzU0ZqEIJXsclt/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Download Resume
+                        </a>
+                    </div>
+
+                    <p
+                        id="formStatus"
+                        style="color:var(--muted);font-size:.9rem;margin-top:.5rem;"
+                    ></p>
+
+                </form>
+
+                <!-- SMALL RESPONSE NOTE -->
+                <p class="contact-note">
+                    I’m always open to discussing opportunities, projects,
+                    collaborations, and new ideas.
+                </p>
+
+            </div>
+
+
+            <!-- CONNECT WITH ME -->
+            <div class="glass-card card contact-social-card">
+
+                <h3>Connect With Me</h3>
+
+                <p class="contact-social-sub">
+                    Find me online and let's connect.
+                </p>
+
+                <div class="contact-social-list">
+
+                    <!-- GITHUB -->
+                    <a
+                        class="contact-social-item"
+                        href="https://github.com/spurthygowda08"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <div>
+                            <strong>GitHub</strong>
+                            <span>Explore my projects and code</span>
                         </div>
-                    </div>
+
+                        <span class="social-arrow">↗</span>
+                    </a>
+
+
+                    <!-- LINKEDIN -->
+                    <a
+                        class="contact-social-item"
+                        href="https://linkedin.com/in/spurthygowda0810"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <div>
+                            <strong>LinkedIn</strong>
+                            <span>Let's connect professionally</span>
+                        </div>
+
+                        <span class="social-arrow">↗</span>
+                    </a>
+
+
+                    <!-- INSTAGRAM -->
+                    <a
+                        class="contact-social-item"
+                        href="https://www.instagram.com/_spurthy_gowda/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <div>
+                            <strong>Instagram</strong>
+                            <span>A little more about me</span>
+                        </div>
+
+                        <span class="social-arrow">↗</span>
+                    </a>
+
+
+                    <!-- EMAIL -->
+                    <a
+                        class="contact-social-item"
+                        href="mailto:spurthygowda0810@gmail.com"
+                    >
+                        <div>
+                            <strong>Email</strong>
+                            <span>Send me an email</span>
+                        </div>
+
+                        <span class="social-arrow">↗</span>
+                    </a>
+
                 </div>
+
             </div>
-        </section>
-        <footer>
-            <div class="container inner">
-                <span>
-                    © <script>
-                        document.write(new Date().getFullYear())
-                    </script>
-                    Spurthy Gowda.
-                </span>
-                <a class="btn-ghost" href="#home">Back to top ⤴</a>
-            </div>
-        </footer>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+    <div class="container inner">
+
+        <div class="footer-left">
+            <span>
+                ©
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>
+                Spurthy Gowda.
+            </span>
+
+            <span class="footer-tagline">
+                Built with HTML • CSS • JavaScript
+            </span>
+        </div>
+
+        <a
+            class="btn-ghost"
+            href="#home"
+        >
+            Back to top ⤴
+        </a>
+
+    </div>
+</footer>
         <!-- ══════════════════════════════════════════════════════════════════════ -->
         <!--                            SCRIPTS                                    -->
         <!-- ══════════════════════════════════════════════════════════════════════ -->
