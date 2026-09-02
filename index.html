@@ -13,16 +13,17 @@
 
   <meta name="author" content="Spurthyraj R Gowda" />
 
+  <!-- GOOGLE FONTS -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
 
   <style>
 
-    /* =========================
+    /* =====================================================
        RESET
-    ========================= */
+    ===================================================== */
 
     * {
       margin: 0;
@@ -36,10 +37,15 @@
 
     body {
       font-family: "Inter", sans-serif;
-      background: #070b12;
-      color: #eef2f7;
+      background: #05080d;
+      color: #f1f5f9;
       line-height: 1.6;
       overflow-x: hidden;
+    }
+
+    body.light-mode {
+      background: #f7f9fc;
+      color: #101828;
     }
 
     a {
@@ -51,51 +57,111 @@
       font-family: inherit;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
 
-    /* =========================
-       COLORS
-    ========================= */
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
 
     :root {
-      --bg: #070b12;
-      --bg-secondary: #0c121c;
-      --card: #101824;
-      --card-hover: #141e2c;
+      --bg: #05080d;
+      --bg-soft: #090e16;
+      --card: #0c121c;
 
-      --text: #eef2f7;
-      --muted: #94a3b8;
+      --text: #f1f5f9;
+      --muted: #8fa0b5;
 
-      --primary: #64b5f6;
-      --secondary: #8b7cff;
+      --primary: #63b3ff;
+      --secondary: #8275ff;
 
-      --green: #38d39f;
+      --green: #39d39f;
 
       --border: rgba(255, 255, 255, 0.08);
+
+      --max-width: 1280px;
     }
 
 
-    /* =========================
+    /* =====================================================
+       LIGHT MODE
+    ===================================================== */
+
+    body.light-mode {
+      --bg: #f7f9fc;
+      --bg-soft: #ffffff;
+      --card: #ffffff;
+
+      --text: #101828;
+      --muted: #667085;
+
+      --border: rgba(16, 24, 40, 0.10);
+    }
+
+    body.light-mode header {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    body.light-mode .hero {
+      background:
+        radial-gradient(
+          circle at 75% 40%,
+          rgba(99, 179, 255, 0.10),
+          transparent 30%
+        );
+    }
+
+    body.light-mode .photo-frame {
+      background: linear-gradient(
+        145deg,
+        rgba(99, 179, 255, 0.16),
+        rgba(130, 117, 255, 0.12)
+      );
+    }
+
+    body.light-mode .photo-placeholder {
+      background: #e9eef5;
+      color: #667085;
+    }
+
+
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
+
+    .container {
+      width: min(var(--max-width), 92%);
+      margin: 0 auto;
+    }
+
+    section {
+      position: relative;
+    }
+
+
+    /* =====================================================
        NAVBAR
-    ========================= */
+    ===================================================== */
 
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 1000;
 
-      background: rgba(7, 11, 18, 0.88);
-      backdrop-filter: blur(14px);
+      background: rgba(5, 8, 13, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
       border-bottom: 1px solid var(--border);
     }
 
     nav {
-      height: 68px;
+      height: 76px;
 
       display: flex;
       align-items: center;
@@ -104,31 +170,44 @@
 
     .logo {
       font-family: "Space Grotesk", sans-serif;
+
       font-size: 1.2rem;
       font-weight: 700;
-      letter-spacing: -0.5px;
+
+      letter-spacing: -0.04em;
     }
 
     .logo span {
       color: var(--primary);
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
     .nav-links {
       display: flex;
-      gap: 4px;
+      align-items: center;
+      gap: 5px;
+
       list-style: none;
     }
 
     .nav-links a {
-      padding: 8px 12px;
+      display: block;
+
+      padding: 9px 13px;
 
       color: var(--muted);
 
+      font-size: 0.86rem;
+      font-weight: 500;
+
       border-radius: 8px;
 
-      font-size: 0.88rem;
-
-      transition: 0.25s;
+      transition: 0.25s ease;
     }
 
     .nav-links a:hover {
@@ -136,32 +215,72 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    .menu-btn {
-      display: none;
+    .theme-btn {
+      width: 38px;
+      height: 38px;
 
-      background: none;
-      border: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.035);
 
       color: var(--text);
 
-      font-size: 1.6rem;
+      cursor: pointer;
+
+      font-size: 0.95rem;
+
+      transition: 0.25s ease;
+    }
+
+    .theme-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(99, 179, 255, 0.35);
+    }
+
+    .menu-btn {
+      display: none;
+
+      width: 40px;
+      height: 40px;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      background: transparent;
+      color: var(--text);
 
       cursor: pointer;
+
+      font-size: 1.2rem;
     }
 
 
-    /* =========================
+    /* =====================================================
        HERO
-    ========================= */
+    ===================================================== */
 
     #home {
-      min-height: calc(100vh - 68px);
+      min-height: 100vh;
 
       display: flex;
       align-items: center;
 
-      position: relative;
+      padding-top: 76px;
+
       overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(99, 179, 255, 0.075),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(130, 117, 255, 0.08),
+          transparent 25%
+        );
     }
 
     #home::before {
@@ -169,17 +288,19 @@
 
       position: absolute;
 
-      width: 600px;
-      height: 600px;
+      width: 500px;
+      height: 500px;
 
-      background: rgba(100, 181, 246, 0.08);
-
-      filter: blur(100px);
+      top: 15%;
+      left: 35%;
 
       border-radius: 50%;
 
-      top: -200px;
-      right: -150px;
+      background: rgba(99, 179, 255, 0.055);
+
+      filter: blur(100px);
+
+      pointer-events: none;
     }
 
     #home::after {
@@ -190,64 +311,76 @@
       width: 450px;
       height: 450px;
 
-      background: rgba(139, 124, 255, 0.07);
-
-      filter: blur(100px);
+      right: -150px;
+      bottom: -150px;
 
       border-radius: 50%;
 
-      bottom: -200px;
-      left: -150px;
+      background: rgba(130, 117, 255, 0.06);
+
+      filter: blur(100px);
+
+      pointer-events: none;
     }
 
     .hero {
+      min-height: calc(100vh - 76px);
+
+      position: relative;
+
       display: grid;
 
-      grid-template-columns: 1.3fr 0.7fr;
-
-      gap: 60px;
+      grid-template-columns: 0.85fr 1.3fr 0.85fr;
 
       align-items: center;
 
-      position: relative;
-      z-index: 2;
+      gap: 35px;
 
       padding: 70px 0;
     }
 
-    .hero-tag {
-      color: var(--primary);
 
-      font-size: 0.78rem;
+    /* =====================================================
+       HERO LEFT
+    ===================================================== */
 
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      margin-bottom: 18px;
-
-      font-weight: 600;
+    .hero-left {
+      position: relative;
+      z-index: 3;
     }
 
-    .hero h1 {
-      font-family: "Space Grotesk", sans-serif;
+    .hero-small-title {
+      color: var(--primary);
 
-      font-size: clamp(3.2rem, 7vw, 6rem);
+      font-size: 0.72rem;
+      font-weight: 700;
 
-      line-height: 0.95;
+      letter-spacing: 0.20em;
 
-      letter-spacing: -0.05em;
+      text-transform: uppercase;
 
       margin-bottom: 22px;
     }
 
-    .hero h1 span {
+    .hero-left h1 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: clamp(3.8rem, 6vw, 6.7rem);
+
+      line-height: 0.88;
+
+      letter-spacing: -0.075em;
+
+      font-weight: 700;
+    }
+
+    .hero-left h1 span {
       display: block;
 
       background: linear-gradient(
-        100deg,
-        var(--primary),
-        var(--secondary)
+        110deg,
+        #62b5ff,
+        #8275ff
       );
 
       -webkit-background-clip: text;
@@ -257,23 +390,24 @@
     }
 
     .hero-role {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      margin-top: 30px;
 
+      font-size: 1rem;
       font-weight: 600;
 
-      margin-bottom: 16px;
+      color: var(--text);
 
-      color: #d8e1ec;
+      max-width: 340px;
     }
 
     .hero-description {
+      margin-top: 18px;
+
       color: var(--muted);
 
-      max-width: 650px;
+      font-size: 0.88rem;
 
-      font-size: 1rem;
-
-      margin-bottom: 30px;
+      max-width: 360px;
     }
 
     .hero-buttons {
@@ -281,13 +415,15 @@
 
       flex-wrap: wrap;
 
-      gap: 12px;
+      gap: 10px;
+
+      margin-top: 27px;
     }
 
 
-    /* =========================
+    /* =====================================================
        BUTTONS
-    ========================= */
+    ===================================================== */
 
     .btn {
       display: inline-flex;
@@ -295,33 +431,32 @@
       align-items: center;
       justify-content: center;
 
-      padding: 11px 18px;
+      padding: 11px 17px;
 
-      border-radius: 10px;
+      border-radius: 9px;
 
+      font-size: 0.82rem;
       font-weight: 600;
-
-      font-size: 0.9rem;
 
       border: 1px solid var(--border);
 
-      transition: 0.25s;
+      transition: 0.25s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
-
       color: #07101a;
 
       border: none;
+
+      background: linear-gradient(
+        135deg,
+        #63b3ff,
+        #8275ff
+      );
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.035);
     }
 
     .btn:hover {
@@ -329,145 +464,339 @@
     }
 
 
-    /* =========================
-       AVAILABILITY
-    ========================= */
+    /* =====================================================
+       HERO PHOTO
+    ===================================================== */
+
+    .hero-center {
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      min-height: 650px;
+    }
+
+    .photo-glow {
+      position: absolute;
+
+      width: 430px;
+      height: 430px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(99, 179, 255, 0.18),
+          rgba(130, 117, 255, 0.08),
+          transparent 68%
+        );
+
+      filter: blur(18px);
+    }
+
+    .photo-frame {
+      position: relative;
+      z-index: 2;
+
+      width: min(380px, 80%);
+
+      padding: 11px;
+
+      border-radius: 34px;
+
+      background: linear-gradient(
+        145deg,
+        rgba(99, 179, 255, 0.22),
+        rgba(130, 117, 255, 0.16)
+      );
+
+      border: 1px solid rgba(255, 255, 255, 0.10);
+
+      transform: rotate(2deg);
+
+      box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.45),
+        0 0 70px rgba(99, 179, 255, 0.07);
+
+      transition: 0.5s ease;
+    }
+
+    .photo-frame:hover {
+      transform: rotate(0deg) translateY(-8px);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+
+      aspect-ratio: 3 / 4;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      border-radius: 25px;
+
+      background:
+        radial-gradient(
+          circle at 50% 25%,
+          rgba(99, 179, 255, 0.12),
+          transparent 35%
+        ),
+        #0b111c;
+
+      color: var(--muted);
+
+      border: 1px solid rgba(255, 255, 255, 0.06);
+
+      overflow: hidden;
+    }
+
+    .photo-placeholder-content {
+      padding: 30px;
+    }
+
+    .photo-icon {
+      width: 65px;
+      height: 65px;
+
+      margin: 0 auto 20px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(99, 179, 255, 0.08);
+
+      border: 1px solid rgba(99, 179, 255, 0.15);
+
+      font-size: 1.4rem;
+    }
+
+    .photo-placeholder strong {
+      display: block;
+
+      color: var(--text);
+
+      font-size: 1rem;
+
+      margin-bottom: 7px;
+    }
+
+    .photo-placeholder p {
+      font-size: 0.75rem;
+
+      line-height: 1.6;
+    }
+
+    .photo-caption {
+      padding: 13px 5px 5px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 0.68rem;
+
+      letter-spacing: 0.04em;
+    }
+
+
+    /* =====================================================
+       HERO RIGHT
+    ===================================================== */
+
+    .hero-right {
+      position: relative;
+      z-index: 3;
+
+      align-self: center;
+
+      padding-top: 30px;
+    }
+
+    .side-label {
+      color: var(--primary);
+
+      font-size: 0.68rem;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 15px;
+
+      font-weight: 700;
+    }
+
+    .hero-right h2 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: clamp(1.8rem, 3vw, 3rem);
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+
+      margin-bottom: 18px;
+    }
+
+    .hero-right h2 span {
+      color: var(--muted);
+    }
+
+    .hero-right p {
+      color: var(--muted);
+
+      font-size: 0.84rem;
+
+      max-width: 330px;
+    }
 
     .availability {
-      margin-top: 28px;
-
       display: flex;
 
       align-items: center;
 
       gap: 9px;
 
+      margin-top: 25px;
+
       color: var(--muted);
 
-      font-size: 0.85rem;
+      font-size: 0.76rem;
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
 
-      background: var(--green);
-
       border-radius: 50%;
 
-      box-shadow: 0 0 12px var(--green);
+      background: var(--green);
+
+      box-shadow: 0 0 13px var(--green);
     }
 
 
-    /* =========================
-       PROFILE CARD
-    ========================= */
+    /* =====================================================
+       FLOATING DETAILS
+    ===================================================== */
 
-    .hero-card {
+    .floating-tag {
+      position: absolute;
+
+      z-index: 4;
+
+      padding: 9px 13px;
+
+      border-radius: 8px;
+
+      background: rgba(8, 13, 22, 0.72);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      backdrop-filter: blur(12px);
+
+      color: var(--muted);
+
+      font-size: 0.65rem;
+
+      letter-spacing: 0.05em;
+    }
+
+    .floating-one {
+      left: 5%;
+      bottom: 22%;
+    }
+
+    .floating-two {
+      right: 2%;
+      top: 20%;
+    }
+
+
+    /* =====================================================
+       SCROLL INDICATOR
+    ===================================================== */
+
+    .scroll-indicator {
+      position: absolute;
+
+      left: 50%;
+      bottom: 25px;
+
+      transform: translateX(-50%);
+
       display: flex;
-
-      justify-content: center;
-    }
-
-    .profile-card {
-      width: 290px;
-
-      padding: 10px;
-
-      background: linear-gradient(
-        145deg,
-        rgba(100, 181, 246, 0.18),
-        rgba(139, 124, 255, 0.12)
-      );
-
-      border: 1px solid var(--border);
-
-      border-radius: 24px;
-
-      transform: rotate(2deg);
-
-      transition: 0.4s;
-    }
-
-    .profile-card:hover {
-      transform: rotate(0deg) translateY(-8px);
-    }
-
-    /* Temporary photo placeholder */
-
-    .profile-placeholder {
-      width: 100%;
-
-      aspect-ratio: 3 / 4;
-
-      border-radius: 18px;
-
-      background:
-        radial-gradient(
-          circle at 30% 20%,
-          rgba(100, 181, 246, 0.2),
-          transparent 40%
-        ),
-        #111827;
-
-      display: flex;
-
+      flex-direction: column;
       align-items: center;
 
-      justify-content: center;
-
-      text-align: center;
+      gap: 8px;
 
       color: var(--muted);
 
-      padding: 20px;
-
-      font-size: 0.9rem;
-    }
-
-    .photo-note {
-      text-align: center;
-
-      color: var(--muted);
-
-      font-size: 0.7rem;
-
-      padding: 8px;
-    }
-
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    section:not(#home) {
-      padding: 100px 0;
-    }
-
-    .section-heading {
-      margin-bottom: 40px;
-    }
-
-    .section-label {
-      color: var(--primary);
-
-      font-size: 0.75rem;
+      font-size: 0.62rem;
 
       letter-spacing: 0.18em;
 
       text-transform: uppercase;
 
+      opacity: 0.7;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 35px;
+
+      background: linear-gradient(
+        to bottom,
+        var(--primary),
+        transparent
+      );
+    }
+
+
+    /* =====================================================
+       GENERAL SECTIONS
+    ===================================================== */
+
+    section:not(#home) {
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 45px;
+    }
+
+    .section-label {
+      color: var(--primary);
+
+      font-size: 0.68rem;
+
       font-weight: 700;
 
-      margin-bottom: 8px;
+      letter-spacing: 0.20em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
     }
 
     .section-heading h2 {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
 
-      letter-spacing: -0.04em;
+      line-height: 1;
+
+      letter-spacing: -0.06em;
     }
 
     .section-heading p {
@@ -475,40 +804,47 @@
 
       max-width: 650px;
 
-      margin-top: 8px;
+      margin-top: 12px;
+
+      font-size: 0.9rem;
     }
 
 
-    /* =========================
+    /* =====================================================
        CARDS
-    ========================= */
+    ===================================================== */
 
     .card {
-      background: linear-gradient(
-        145deg,
-        rgba(16, 24, 36, 0.95),
-        rgba(12, 18, 28, 0.95)
-      );
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15, 23, 35, 0.92),
+          rgba(8, 14, 23, 0.92)
+        );
 
       border: 1px solid var(--border);
 
       border-radius: 18px;
 
-      padding: 28px;
+      padding: 30px;
 
-      transition: 0.3s;
+      transition: 0.3s ease;
+    }
+
+    body.light-mode .card {
+      background: #ffffff;
     }
 
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
 
-      border-color: rgba(100, 181, 246, 0.25);
+      border-color: rgba(99, 179, 255, 0.25);
     }
 
     .card h3 {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: 1.25rem;
+      font-size: 1.2rem;
 
       margin-bottom: 14px;
     }
@@ -516,46 +852,54 @@
     .card p {
       color: var(--muted);
 
-      font-size: 0.95rem;
-    }
-
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about-grid {
-      display: grid;
-
-      grid-template-columns: 1.5fr 1fr;
-
-      gap: 22px;
-    }
-
-    .about-points {
-      margin-top: 20px;
-
-      display: grid;
-
-      gap: 12px;
-    }
-
-    .about-point {
-      padding: 12px;
-
-      background: rgba(255, 255, 255, 0.025);
-
-      border-radius: 10px;
-
-      color: #cbd5e1;
-
       font-size: 0.9rem;
     }
 
 
-    /* =========================
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 1.4fr 1fr;
+
+      gap: 20px;
+    }
+
+    .about-points {
+      display: grid;
+
+      gap: 9px;
+
+      margin-top: 18px;
+    }
+
+    .about-point {
+      padding: 12px 14px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      border: 1px solid rgba(255, 255, 255, 0.04);
+
+      border-radius: 9px;
+
+      color: #cbd5e1;
+
+      font-size: 0.82rem;
+    }
+
+    body.light-mode .about-point {
+      color: #475467;
+      background: #f8fafc;
+      border-color: #eaecf0;
+    }
+
+
+    /* =====================================================
        EXPERIENCE
-    ========================= */
+    ===================================================== */
 
     .timeline {
       position: relative;
@@ -564,7 +908,11 @@
 
       padding-left: 30px;
 
-      border-left: 1px dashed rgba(255, 255, 255, 0.15);
+      border-left: 1px dashed rgba(255, 255, 255, 0.14);
+    }
+
+    body.light-mode .timeline {
+      border-left-color: rgba(16, 24, 40, 0.14);
     }
 
     .timeline-item {
@@ -573,17 +921,12 @@
       margin-bottom: 35px;
     }
 
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
     .timeline-item::before {
       content: "";
 
       position: absolute;
 
       left: -37px;
-
       top: 5px;
 
       width: 12px;
@@ -598,7 +941,7 @@
       );
 
       box-shadow:
-        0 0 0 5px rgba(100, 181, 246, 0.1);
+        0 0 0 5px rgba(99, 179, 255, 0.10);
     }
 
     .timeline-item h3 {
@@ -610,15 +953,17 @@
     .timeline-meta {
       color: var(--primary);
 
-      font-size: 0.85rem;
+      font-size: 0.78rem;
 
-      margin: 4px 0 12px;
+      margin: 5px 0 14px;
     }
 
     .timeline-item ul {
       padding-left: 18px;
 
       color: var(--muted);
+
+      font-size: 0.88rem;
     }
 
     .timeline-item li {
@@ -626,9 +971,9 @@
     }
 
 
-    /* =========================
+    /* =====================================================
        PROJECTS
-    ========================= */
+    ===================================================== */
 
     .projects-grid {
       display: grid;
@@ -639,19 +984,21 @@
     }
 
     .project-card {
+      min-height: 310px;
+
       display: flex;
 
       flex-direction: column;
-
-      min-height: 300px;
     }
 
     .project-number {
       color: var(--primary);
 
-      font-size: 0.75rem;
+      font-size: 0.65rem;
 
-      letter-spacing: 0.15em;
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
 
       margin-bottom: 20px;
     }
@@ -677,27 +1024,27 @@
     }
 
     .project-tag {
-      font-size: 0.75rem;
-
       padding: 5px 9px;
 
-      background: rgba(100, 181, 246, 0.08);
-
-      color: #a8d8fa;
-
       border-radius: 6px;
+
+      background: rgba(99, 179, 255, 0.08);
+
+      color: #9fd4ff;
+
+      font-size: 0.7rem;
     }
 
     .project-links {
       display: flex;
 
-      gap: 12px;
+      gap: 15px;
     }
 
     .project-links a {
       color: var(--primary);
 
-      font-size: 0.85rem;
+      font-size: 0.8rem;
 
       font-weight: 600;
     }
@@ -707,9 +1054,9 @@
     }
 
 
-    /* =========================
+    /* =====================================================
        SKILLS
-    ========================= */
+    ===================================================== */
 
     .skills-grid {
       display: grid;
@@ -744,13 +1091,18 @@
 
       color: #cbd5e1;
 
-      font-size: 0.82rem;
+      font-size: 0.75rem;
 
-      transition: 0.2s;
+      transition: 0.2s ease;
+    }
+
+    body.light-mode .skill {
+      color: #475467;
+      background: #f8fafc;
     }
 
     .skill:hover {
-      border-color: rgba(100, 181, 246, 0.4);
+      border-color: rgba(99, 179, 255, 0.4);
 
       color: var(--primary);
 
@@ -758,9 +1110,9 @@
     }
 
 
-    /* =========================
+    /* =====================================================
        EDUCATION
-    ========================= */
+    ===================================================== */
 
     .education-grid {
       display: grid;
@@ -773,7 +1125,7 @@
     .education-year {
       color: var(--primary);
 
-      font-size: 0.8rem;
+      font-size: 0.75rem;
 
       font-weight: 600;
 
@@ -789,22 +1141,55 @@
     }
 
 
-    /* =========================
+    /* =====================================================
        CONTACT
-    ========================= */
+    ===================================================== */
 
     .contact-box {
       text-align: center;
 
-      padding: 60px 30px;
+      padding: 70px 30px;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: "";
+
+      position: absolute;
+
+      width: 350px;
+      height: 350px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      background: rgba(99, 179, 255, 0.06);
+
+      filter: blur(80px);
+
+      pointer-events: none;
+    }
+
+    .contact-box > * {
+      position: relative;
+      z-index: 2;
     }
 
     .contact-box h2 {
       font-family: "Space Grotesk", sans-serif;
 
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2.2rem, 5vw, 4rem);
 
-      margin-bottom: 15px;
+      line-height: 1;
+
+      letter-spacing: -0.06em;
+
+      margin-bottom: 17px;
     }
 
     .contact-box p {
@@ -813,6 +1198,8 @@
       max-width: 600px;
 
       margin: 0 auto 28px;
+
+      font-size: 0.9rem;
     }
 
     .contact-links {
@@ -822,13 +1209,13 @@
 
       flex-wrap: wrap;
 
-      gap: 12px;
+      gap: 10px;
     }
 
 
-    /* =========================
+    /* =====================================================
        FOOTER
-    ========================= */
+    ===================================================== */
 
     footer {
       border-top: 1px solid var(--border);
@@ -837,7 +1224,7 @@
 
       color: var(--muted);
 
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     .footer-inner {
@@ -845,9 +1232,9 @@
 
       justify-content: space-between;
 
-      gap: 20px;
-
       align-items: center;
+
+      gap: 20px;
     }
 
     .socials {
@@ -861,34 +1248,95 @@
     }
 
 
-    /* =========================
-       ANIMATION
-    ========================= */
-
-    .fade-up {
-      animation: fadeUp 0.8s ease both;
-    }
+    /* =====================================================
+       ANIMATIONS
+    ===================================================== */
 
     @keyframes fadeUp {
       from {
         opacity: 0;
-
         transform: translateY(25px);
       }
 
       to {
         opacity: 1;
-
         transform: translateY(0);
       }
     }
 
+    @keyframes floatPhoto {
+      0%,
+      100% {
+        transform: rotate(2deg) translateY(0);
+      }
 
-    /* =========================
+      50% {
+        transform: rotate(2deg) translateY(-10px);
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .delay-1 {
+      animation-delay: 0.12s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.24s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.36s;
+    }
+
+    .delay-4 {
+      animation-delay: 0.48s;
+    }
+
+    .photo-frame {
+      animation: floatPhoto 5s ease-in-out infinite;
+    }
+
+
+    /* =====================================================
        MOBILE
-    ========================= */
+    ===================================================== */
+
+    @media (max-width: 1050px) {
+
+      .hero {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .hero-left h1 {
+        font-size: clamp(4rem, 8vw, 6rem);
+      }
+
+      .hero-center {
+        min-height: 600px;
+      }
+    }
+
 
     @media (max-width: 800px) {
+
+      header {
+        background: rgba(5, 8, 13, 0.92);
+      }
+
+      nav {
+        height: 68px;
+      }
+
+      .nav-right {
+        gap: 10px;
+      }
 
       .nav-links {
         display: none;
@@ -896,7 +1344,6 @@
         position: absolute;
 
         top: 68px;
-
         left: 0;
 
         width: 100%;
@@ -905,7 +1352,9 @@
 
         flex-direction: column;
 
-        background: rgba(7, 11, 18, 0.98);
+        background: rgba(5, 8, 13, 0.97);
+
+        backdrop-filter: blur(18px);
 
         border-bottom: 1px solid var(--border);
       }
@@ -915,7 +1364,7 @@
       }
 
       .nav-links a {
-        display: block;
+        width: 100%;
 
         padding: 12px;
       }
@@ -925,18 +1374,34 @@
       }
 
       .hero {
-        grid-template-columns: 1fr;
+        min-height: auto;
 
-        text-align: center;
+        grid-template-columns: 1fr;
 
         gap: 45px;
 
-        padding: 70px 0;
+        padding: 80px 0 90px;
+
+        text-align: center;
       }
 
+      .hero-center {
+        order: -1;
+
+        min-height: auto;
+      }
+
+      .hero-left {
+        order: 2;
+      }
+
+      .hero-left h1 {
+        font-size: clamp(3.5rem, 16vw, 6rem);
+      }
+
+      .hero-role,
       .hero-description {
         margin-left: auto;
-
         margin-right: auto;
       }
 
@@ -948,12 +1413,22 @@
         justify-content: center;
       }
 
-      .hero-card {
-        order: -1;
+      .photo-frame {
+        width: min(330px, 78%);
       }
 
-      .profile-card {
-        width: 220px;
+      .floating-one {
+        left: 3%;
+        bottom: 12%;
+      }
+
+      .floating-two {
+        right: 3%;
+        top: 8%;
+      }
+
+      .scroll-indicator {
+        display: none;
       }
 
       .about-grid,
@@ -964,7 +1439,7 @@
       }
 
       section:not(#home) {
-        padding: 75px 0;
+        padding: 80px 0;
       }
 
       .footer-inner {
@@ -977,16 +1452,40 @@
 
     @media (max-width: 500px) {
 
-      .hero h1 {
-        font-size: 3.1rem;
+      .container {
+        width: 90%;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .hero-left h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero-role {
+        font-size: 0.95rem;
+      }
+
+      .hero-description {
+        font-size: 0.82rem;
+      }
+
+      .hero-buttons {
+        width: 100%;
       }
 
       .btn {
         width: 100%;
       }
 
-      .hero-buttons {
-        width: 100%;
+      .photo-frame {
+        width: 75%;
+      }
+
+      .floating-tag {
+        display: none;
       }
 
       .contact-links {
@@ -1004,9 +1503,10 @@
 
 <body>
 
-  <!-- =========================
+
+  <!-- =====================================================
        NAVIGATION
-  ========================== -->
+  ====================================================== -->
 
   <header>
 
@@ -1018,45 +1518,61 @@
           SPURTHY<span>.</span>
         </a>
 
-        <button
-          class="menu-btn"
-          id="menuBtn"
-          aria-label="Open menu"
-        >
-          ☰
-        </button>
 
-        <ul class="nav-links" id="navLinks">
+        <div class="nav-right">
 
-          <li>
-            <a href="#home">Home</a>
-          </li>
+          <ul class="nav-links" id="navLinks">
 
-          <li>
-            <a href="#about">About</a>
-          </li>
+            <li>
+              <a href="#home">Home</a>
+            </li>
 
-          <li>
-            <a href="#experience">Experience</a>
-          </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
 
-          <li>
-            <a href="#projects">Projects</a>
-          </li>
+            <li>
+              <a href="#experience">Experience</a>
+            </li>
 
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
+            <li>
+              <a href="#projects">Projects</a>
+            </li>
 
-          <li>
-            <a href="#education">Education</a>
-          </li>
+            <li>
+              <a href="#skills">Skills</a>
+            </li>
 
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
+            <li>
+              <a href="#education">Education</a>
+            </li>
 
-        </ul>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+
+          </ul>
+
+
+          <button
+            class="theme-btn"
+            id="themeBtn"
+            aria-label="Toggle theme"
+            title="Toggle theme"
+          >
+            ☾
+          </button>
+
+
+          <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+
+        </div>
 
       </nav>
 
@@ -1065,16 +1581,17 @@
   </header>
 
 
-  <!-- =========================
+
+  <!-- =====================================================
        MAIN
-  ========================== -->
+  ====================================================== -->
 
   <main>
 
 
-    <!-- =========================
+    <!-- ===================================================
          HERO
-    ========================== -->
+    ==================================================== -->
 
     <section id="home">
 
@@ -1082,9 +1599,12 @@
 
         <div class="hero">
 
-          <div class="fade-up">
 
-            <div class="hero-tag">
+          <!-- LEFT SIDE -->
+
+          <div class="hero-left fade-up">
+
+            <div class="hero-small-title">
               MCA Graduate • Software Development • QA
             </div>
 
@@ -1104,10 +1624,8 @@
               reliable user experiences through testing and debugging.
             </p>
 
-
             <div class="hero-buttons">
 
-              <!-- Resume will be added later -->
               <a
                 href="#"
                 class="btn btn-primary"
@@ -1123,7 +1641,6 @@
                 GitHub
               </a>
 
-              <!-- LinkedIn will be added later -->
               <a
                 href="#"
                 class="btn btn-secondary"
@@ -1135,11 +1652,82 @@
                 href="mailto:spurthygowda0810@gmail.com"
                 class="btn btn-secondary"
               >
-                Contact Me
+                Contact
               </a>
 
             </div>
 
+          </div>
+
+
+
+          <!-- CENTER PHOTO -->
+
+          <div class="hero-center fade-up delay-2">
+
+            <div class="photo-glow"></div>
+
+
+            <div class="photo-frame">
+
+              <div class="photo-placeholder">
+
+                <div class="photo-placeholder-content">
+
+                  <div class="photo-icon">
+                    ✦
+                  </div>
+
+                  <strong>
+                    Your Photo
+                  </strong>
+
+                  <p>
+                    Professional photo<br />
+                    will be added here later.
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div class="photo-caption">
+                SOFTWARE DEVELOPER • MCA GRADUATE
+              </div>
+
+            </div>
+
+
+            <div class="floating-tag floating-one">
+              OPEN TO OPPORTUNITIES
+            </div>
+
+            <div class="floating-tag floating-two">
+              SOFTWARE • QA • WEB
+            </div>
+
+          </div>
+
+
+
+          <!-- RIGHT SIDE -->
+
+          <div class="hero-right fade-up delay-3">
+
+            <div class="side-label">
+              01 — Software Development
+            </div>
+
+            <h2>
+              Building useful
+              <span>digital experiences.</span>
+            </h2>
+
+            <p>
+              Interested in creating clean web applications,
+              solving real-world problems, and developing reliable
+              software with a quality-first mindset.
+            </p>
 
             <div class="availability">
 
@@ -1152,42 +1740,26 @@
           </div>
 
 
-          <!-- PROFILE -->
-
-          <div class="hero-card fade-up">
-
-            <div class="profile-card">
-
-              <!-- PHOTO WILL BE ADDED LATER -->
-
-              <div class="profile-placeholder">
-                <div>
-                  <strong>Your Photo</strong>
-                  <br />
-                  <br />
-                  We will add your professional
-                  photo here later.
-                </div>
-              </div>
-
-              <div class="photo-note">
-                Software Developer • MCA Graduate
-              </div>
-
-            </div>
-
-          </div>
-
         </div>
+
+      </div>
+
+
+      <div class="scroll-indicator">
+
+        Scroll
+
+        <div class="scroll-line"></div>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
+
+    <!-- ===================================================
          ABOUT
-    ========================== -->
+    ==================================================== -->
 
     <section id="about">
 
@@ -1282,6 +1854,7 @@
 
           </div>
 
+
         </div>
 
       </div>
@@ -1289,9 +1862,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ===================================================
          EXPERIENCE
-    ========================== -->
+    ==================================================== -->
 
     <section id="experience">
 
@@ -1356,9 +1930,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ===================================================
          PROJECTS
-    ========================== -->
+    ==================================================== -->
 
     <section id="projects">
 
@@ -1403,7 +1978,6 @@
               story universes through an interactive web interface.
             </p>
 
-
             <div class="project-tags">
 
               <span class="project-tag">
@@ -1428,7 +2002,6 @@
 
             </div>
 
-
             <div class="project-links">
 
               <a
@@ -1441,6 +2014,7 @@
             </div>
 
           </div>
+
 
 
           <!-- PROJECT 2 -->
@@ -1460,7 +2034,6 @@
               hand gestures and voice commands to enable
               hands-free computer interaction.
             </p>
-
 
             <div class="project-tags">
 
@@ -1486,7 +2059,6 @@
 
             </div>
 
-
             <div class="project-links">
 
               <a
@@ -1508,9 +2080,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ===================================================
          SKILLS
-    ========================== -->
+    ==================================================== -->
 
     <section id="skills">
 
@@ -1559,6 +2132,7 @@
           </div>
 
 
+
           <div class="card skill-group">
 
             <h3>
@@ -1577,6 +2151,7 @@
             </div>
 
           </div>
+
 
 
           <div class="card skill-group">
@@ -1601,6 +2176,7 @@
             </div>
 
           </div>
+
 
 
           <div class="card skill-group">
@@ -1640,6 +2216,7 @@
           </div>
 
 
+
           <div class="card skill-group">
 
             <h3>
@@ -1667,6 +2244,7 @@
             </div>
 
           </div>
+
 
 
           <div class="card skill-group">
@@ -1698,9 +2276,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ===================================================
          EDUCATION
-    ========================== -->
+    ==================================================== -->
 
     <section id="education">
 
@@ -1747,6 +2326,7 @@
           </div>
 
 
+
           <div class="card education-card">
 
             <div class="education-year">
@@ -1779,9 +2359,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ===================================================
          CONTACT
-    ========================== -->
+    ==================================================== -->
 
     <section id="contact">
 
@@ -1822,8 +2403,6 @@
               GitHub
             </a>
 
-            <!-- Add LinkedIn URL later -->
-
             <a
               href="#"
               class="btn btn-secondary"
@@ -1839,12 +2418,14 @@
 
     </section>
 
+
   </main>
 
 
-  <!-- =========================
+
+  <!-- =====================================================
        FOOTER
-  ========================== -->
+  ====================================================== -->
 
   <footer>
 
@@ -1881,11 +2462,16 @@
   </footer>
 
 
-  <!-- =========================
+
+  <!-- =====================================================
        JAVASCRIPT
-  ========================== -->
+  ====================================================== -->
 
   <script>
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
 
     const menuBtn =
       document.getElementById("menuBtn");
@@ -1901,8 +2487,6 @@
     });
 
 
-    // Close mobile menu after clicking a link
-
     document
       .querySelectorAll(".nav-links a")
       .forEach(function (link) {
@@ -1914,6 +2498,59 @@
         });
 
       });
+
+
+
+    /* =========================
+       DARK / LIGHT THEME
+    ========================== */
+
+    const themeBtn =
+      document.getElementById("themeBtn");
+
+
+    const savedTheme =
+      localStorage.getItem("portfolio-theme");
+
+
+    if (savedTheme === "light") {
+
+      document.body.classList.add("light-mode");
+
+      themeBtn.textContent = "☀";
+
+    }
+
+
+    themeBtn.addEventListener("click", function () {
+
+      document.body.classList.toggle("light-mode");
+
+
+      if (
+        document.body.classList.contains("light-mode")
+      ) {
+
+        themeBtn.textContent = "☀";
+
+        localStorage.setItem(
+          "portfolio-theme",
+          "light"
+        );
+
+      } else {
+
+        themeBtn.textContent = "☾";
+
+        localStorage.setItem(
+          "portfolio-theme",
+          "dark"
+        );
+
+      }
+
+    });
+
 
   </script>
 
